@@ -4,6 +4,7 @@
     <title>Test</title>
   </head>
   <body>
-  <%=request.getAttribute("test")%>
+  <%=request.getAttribute("test")%><br>
+  Mejnun is here as well
   </body>
 </html>
