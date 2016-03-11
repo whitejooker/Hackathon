@@ -5,6 +5,6 @@
   </head>
   <body>
   <%=request.getAttribute("test")%><br>
-  Mejnun is here as well
+  Mejnun is here as well :-)
   </body>
 </html>
