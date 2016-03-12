@@ -16,6 +16,7 @@ private List<String> errorMessages = new ArrayList<>( );
 
 private UserValidator( HttpServletRequest request ){
 	util = new RequestUtil( request );
+	
 }
 
 private boolean checkUsername( ){
