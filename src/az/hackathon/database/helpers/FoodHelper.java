@@ -18,7 +18,6 @@ public class FoodHelper extends Helper{
 
 
 
-
     private static void setValuesIntoPreparedStatement(PreparedStatement statement, Food food) throws SQLException {
         statement.setString(1, food.getName());
         statement.setString(2, food.getDescription());
