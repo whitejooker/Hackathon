@@ -6,6 +6,7 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li class="active"><a href="/?action=profile">Profile</a></li>
+            <li class="active"><a href="/?action=add_food">Add Food</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/?action=exit"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
@@ -68,5 +69,5 @@
 </div>
 
 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
-    <span class="glyphicon glyphicon-cog"></span>Search
+    <span class="glyphicon glyphicon-search"></span>Search
 </button>
