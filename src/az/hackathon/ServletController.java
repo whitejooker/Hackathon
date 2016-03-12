@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "UserRegistrar", urlPatterns = { "/register", "/register/" })
+@WebServlet(name = "UserRegistrar", urlPatterns = { "" })
 public class ServletController extends HttpServlet{
 final static String ACTION_REGISTER = "register";
 
@@ -19,21 +19,22 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 	final String action = request.getParameter( RequestUtil.PARAM_ACTION );
 	String path = ApplicationConstants.JSP_HOME_PAGE;
 	boolean forward = true;
-	if( action.equals( ACTION_REGISTER ) ){
-		UserValidator validator = new UserValidator( request );
-		if( validator.isValid( ) ){
-			UserHelper helper = new UserHelper( );
-			helper.saveUser( validator.forSaving );
-			request.getSession( ).setAttribute( ApplicationConstants.ATTR_USER, validator.forSaving );
-			request.setAttribute( ApplicationConstants.ATTR_USER, true );
-		}else{
-			request.setAttribute( ApplicationConstants.ATTR_MESSAGES, validator.getErrorMessages( ) );
-			doGet( request, response );
+	if( action != null ) if( action.equals( ACTION_REGISTER ) ){
+		path = ApplicationConstants.JSP_REGISTRATION;
+		if( request.getParameter( ApplicationConstants.ATTR_SUBMIT ) != null ){
+			UserValidator validator = new UserValidator( request );
+			if( validator.isValid( ) ){
+				UserHelper helper = new UserHelper( );
+				helper.saveUser( validator.forSaving );
+				request.getSession( ).setAttribute( ApplicationConstants.ATTR_USER, validator.forSaving );
+				request.setAttribute( ApplicationConstants.ATTR_IS_LOGGED, true );
+				path = "/";
+				forward = false;
+			}else request.setAttribute( ApplicationConstants.ATTR_MESSAGES, validator.getErrorMessages( ) );
 		}
 	}
-
-	if( forward ) request.getRequestDispatcher( ApplicationConstants.JSP_REGISTRATION ).forward( request, response );
-
+	if( forward ) request.getRequestDispatcher( "/WEB-INF/views/" + path ).forward( request, response );
+	else response.sendRedirect( path );
 }
 
 // overridden
