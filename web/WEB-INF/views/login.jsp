@@ -3,15 +3,15 @@
 <html>
 <head>
     <title>Login</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-    <link rel="stylesheet" href="../assets/css/style.css"/>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../../assets/css/style.css"/>
     <%--<link rel="stylesheet" href="../assets/css/register.css">--%>
 </head>
 <body>
-<%@include  file="../WEB-INF/includes/menu.jsp" %>
+<%@include  file="../includes/menu-for-login-and-register.jsp" %>
 <div class="container">
     <div class="row">
-        <form role="form">
+        <form role="form" action="/?action=login">
             <div class="col-lg-6">
                 <br>
 
@@ -46,7 +46,7 @@
         <%--</div>--%>
     </div>
 </div>
-<%@include  file="../WEB-INF/includes/footer.jsp" %>
-<script src="../assets/js/bootstrap.js"></script>
+<%@include  file="../includes/footer.jsp" %>
+<script src="../../assets/js/bootstrap.js"></script>
 </body>
 </html>
