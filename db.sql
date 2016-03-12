@@ -48,3 +48,4 @@ CREATE TABLE complain (
 );
 
 INSERT INTO city VALUE (NULL, "Baku"), (NULL, "Ganja");
+INSERT INTO meal VALUE (NULL, " zibi 3", "chox alaca zib", 929, now(), 939, 221, 939, TRUE, 3, "jpg");

@@ -8,14 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Qalib on 3/12/2016.
- */
 public class FoodHelper extends Helper{
-
-
-
-
     private static void setValuesIntoPreparedStatement(PreparedStatement statement, Food food) throws SQLException {
         statement.setString(1, food.getName());
         statement.setString(2, food.getDescription());
