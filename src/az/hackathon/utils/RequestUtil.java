@@ -14,6 +14,11 @@ public final static String PARAM_EMAIL = "email";
 public final static String PARAM_NAME = "name";
 public final static String PARAM_CITY_ID = "city_id";
 public final static String PARAM_ACTION = "action";
+public final static String PARAM_STATE = "state";
+public final static String PARAM_AMOUNT = "state";
+public final static String PARAM_PRICE = "price";
+public final static String PARAM_TYPE_ID = "type_id";
+public final static String PARAM_ADDRESS = "address";
 
 public HttpServletRequest request;
 

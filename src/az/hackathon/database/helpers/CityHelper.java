@@ -40,7 +40,7 @@ public City getCity( int id ){
 }
 
 // getters and setters
-public List<City> getAllCities( ){
+	public List<City> getAllCities( ){
 	List<City> listOfCity = new ArrayList<>( );
 	try{
 		PreparedStatement statement = database.getConnection( ).prepareStatement( "SELECT * FROM city" );
@@ -56,4 +56,21 @@ public List<City> getAllCities( ){
 	}
 	return listOfCity;
 }
+	public int getNumberOfCities(){
+		int numberOfCities = -1;
+		try{
+			PreparedStatement statement = database.getConnection().prepareStatement("select count(city_id) from city");
+			ResultSet rs = statement.executeQuery();
+			if(rs.next()){
+				numberOfCities = rs.getInt(1);
+			}
+		}catch(SQLException ex){
+			System.out.println("Can't get number of cities : " + ex.getMessage());
+			ex.printStackTrace( );
+		}finally{
+			database.close();
+		}
+		return numberOfCities;
+	}
+
 }

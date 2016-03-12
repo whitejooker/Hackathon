@@ -1,7 +1,10 @@
 package az.hackathon;
 
 import az.hackathon.database.helpers.UserHelper;
+import az.hackathon.models.Selection;
+import az.hackathon.models.User;
 import az.hackathon.utils.RequestUtil;
+import az.hackathon.validators.SelectionValidator;
 import az.hackathon.validators.UserValidator;
 
 import javax.servlet.ServletException;
@@ -10,13 +13,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 
 @WebServlet(name = "UserRegistrar", urlPatterns = { "" })
 public class ServletController extends HttpServlet{
 final static String ACTION_REGISTER = "register";
+final static String ACTION_LOGIN = "login";
+final static String ACTION_SETTINGS = "settings";
 
 public void process( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 	final String action = request.getParameter( RequestUtil.PARAM_ACTION );
+	RequestUtil util = new RequestUtil( request );
 	String path = ApplicationConstants.JSP_HOME_PAGE;
 	boolean forward = true;
 	if( action != null ) if( action.equals( ACTION_REGISTER ) ){
@@ -32,7 +39,25 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 				forward = false;
 			}else request.setAttribute( ApplicationConstants.ATTR_MESSAGES, validator.getErrorMessages( ) );
 		}
+	}else if( action.equals( ACTION_LOGIN ) ){
+		path = ApplicationConstants.JSP_LOGIN;
+		if( request.getParameter( ApplicationConstants.ATTR_SUBMIT ) != null ){
+			User user = new UserHelper( ).getUser( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_USERNAME ) );
+			if( user.getId( ) != -1 && user.getPassword( ).equals( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_PASSWORD ) ) ){
+				request.getSession( ).setAttribute( ApplicationConstants.ATTR_USER, user );
+				request.setAttribute( ApplicationConstants.ATTR_IS_LOGGED, true );
+				path = "/";
+				forward = false;
+			}else request.setAttribute( ApplicationConstants.ATTR_MESSAGES, Collections.singletonList( "Password or login is wrong" ) );
+		}
+	}else ;
+
+
+	if( path.equals( ApplicationConstants.JSP_HOME_PAGE ) && ( request.getParameter( ApplicationConstants.ATTR_SUBMIT ) != null || request.getSession( ).getAttribute( ApplicationConstants.ATTR_SELECTION ) == null ) ){
+		Selection selection = new SelectionValidator( ).PrepareSelection( request );
+		request.getSession( ).setAttribute( ApplicationConstants.ATTR_SELECTION, selection );
 	}
+
 	if( forward ) request.getRequestDispatcher( "/WEB-INF/views/" + path ).forward( request, response );
 	else response.sendRedirect( path );
 }
