@@ -6,7 +6,7 @@
   <title>$Title$</title>
 </head>
 <body>
-<%@include  file="../includes/menu-for-admin.jsp" %>
+<%@include  file="../WEB-INF/includes/menu-for-admin.jsp" %>
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
@@ -25,8 +25,8 @@
   </div>
 
 </div>
-<%@include  file="../includes/pagination.jsp" %>
-<%@include  file="../includes/footer.jsp" %>
+<%@include  file="../WEB-INF/includes/pagination.jsp" %>
+<%@include  file="../WEB-INF/includes/footer.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="../../assets/js/bootstrap.js"></script>
 </body>
