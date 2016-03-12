@@ -95,9 +95,7 @@
                 <%--</div>--%>
             </div>
         </div>
-<%@include  file="../WEB-INF/includes/pagination.jsp" %>
 <%@include  file="../WEB-INF/includes/footer.jsp" %>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="../assets/js/bootstrap.js"></script>
 </body>
 </html>
