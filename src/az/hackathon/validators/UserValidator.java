@@ -1,7 +1,6 @@
 package az.hackathon.validators;
 
 import az.hackathon.database.helpers.CityHelper;
-import az.hackathon.database.helpers.UserHelper;
 import az.hackathon.models.City;
 import az.hackathon.models.User;
 import az.hackathon.utils.RequestUtil;
@@ -17,9 +16,9 @@ public static int MIN_USERNAME_LENGTH = 5;
 public static int MIN_PASSWORD_LENGTH = 5;
 public static String USERNAME_PATTERN = String.format( "[a-zA-Z0-9]{%d,%d}$", MIN_USERNAME_LENGTH, MAX_USERNAME_LENGTH );
 public static String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+public User forSaving = new User( );
 RequestUtil util;
 private List<String> errorMessages = new ArrayList<>( );
-private User forSaving = new User( );
 
 public UserValidator( HttpServletRequest request ){
 	util = new RequestUtil( request );
@@ -69,7 +68,7 @@ public boolean isValid( ){
 	}
 	forSaving.setName( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_NAME ) );
 	forSaving.setPhone( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_PHONE ) );
-	City city = new CityHelper( ).getCity( getCityId() );
+	City city = new CityHelper( ).getCity( getCityId( ) );
 	forSaving.setCity( city );
 	return flag;
 }

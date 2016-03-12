@@ -8,15 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * Created by Qalib on 3/12/2016.
- */
 public class UserHelper extends Helper{
-
-
-
-
-
     private static final String id = "id";
     private static final String username = "username";
     private static final String name = "name";
