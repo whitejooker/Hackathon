@@ -49,12 +49,12 @@
 
 <div class="container">
     <div class="row">
-        <c:forEach var="food" items="${requestScope.listoffoods}">
+        <c:forEach var="food" items="${requestScope.foods}">
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <img src="/image/${food.image}" alt="" />
+                    <%--<img src="/image/${food.image}" alt="" />--%>
                     <div class="caption">
-                        <h4><a href="<c:url value="/?id=${food.id}" /> "> ${food.title}</a></h4>
+                        <h4><a href="<c:url value="/?id=${food.id}" /> "> ${food.name}</a></h4>
                         <p>${food.description}.</p>
 
                     </div>

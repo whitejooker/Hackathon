@@ -13,6 +13,7 @@ String ATTR_IS_LOGGED = "isLogged";
 String ATTR_USER = "userLogged";
 String ATTR_SUBMIT = "submit";
 String ATTR_SELECTION = "selection";
+String ATTR_MEALS = "foods";
 
 int DEFAULT_TYPE_ID = 1;
 int DEFAULT_CITY_ID = 1;

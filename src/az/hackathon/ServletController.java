@@ -1,5 +1,6 @@
 package az.hackathon;
 
+import az.hackathon.database.helpers.FoodHelper;
 import az.hackathon.database.helpers.UserHelper;
 import az.hackathon.models.Selection;
 import az.hackathon.models.User;
@@ -52,10 +53,13 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 		}
 	}else ;
 
-
-	if( path.equals( ApplicationConstants.JSP_HOME_PAGE ) && ( request.getParameter( ApplicationConstants.ATTR_SUBMIT ) != null || request.getSession( ).getAttribute( ApplicationConstants.ATTR_SELECTION ) == null ) ){
-		Selection selection = new SelectionValidator( ).PrepareSelection( request );
-		request.getSession( ).setAttribute( ApplicationConstants.ATTR_SELECTION, selection );
+	if( path.equals( ApplicationConstants.JSP_HOME_PAGE )){
+		Selection selection = (Selection) request.getSession( ).getAttribute( ApplicationConstants.ATTR_SELECTION );
+		if( request.getParameter( ApplicationConstants.ATTR_SUBMIT ) != null || selection == null ){
+			selection = new SelectionValidator( ).PrepareSelection( request );
+			request.getSession( ).setAttribute( ApplicationConstants.ATTR_SELECTION, selection );
+		}
+		request.setAttribute( ApplicationConstants.ATTR_MEALS, new FoodHelper().getAllFoodBySelection( selection ) );
 	}
 
 	if( forward ) request.getRequestDispatcher( "/WEB-INF/views/" + path ).forward( request, response );

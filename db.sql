@@ -21,6 +21,7 @@ CREATE TABLE user (
   number_of_complains INT          NOT NULL DEFAULT 0
 );
 
+DROP TABLE food;
 CREATE TABLE food (
   id                INT PRIMARY KEY AUTO_INCREMENT,
   name              VARCHAR(30) NOT NULL,
