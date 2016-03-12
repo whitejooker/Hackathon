@@ -6,6 +6,7 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li class="active"><a href="/?action=profile">Profile</a></li>
+            <li class="active"><a href="/?action=add_food">Add Food</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="/?action=exit"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
@@ -50,23 +51,15 @@
                         <option> Pork Meals</option>
                         <option> Vegetarian Meals</option>
                     </select>
-                </div> <!-- form group [order by] -->
-                <%--<div class="form-group">--%>
-                <%--<div class="checkbox" style="margin-left:10px; margin-right:10px;">--%>
-                <%--<label><input type="checkbox"> Ingested</label>--%>
-                <%--</div>--%>
-                <%--<div class="checkbox" style="margin-left:10px; margin-right:10px;">--%>
-                <%--<label><input type="checkbox"> Automated</label>--%>
-                <%--</div>--%>
-                <%--<button type="submit" class="btn btn-default filter-col">--%>
-                <%--<span class="glyphicon glyphicon-record"></span> Save Settings--%>
-                <%--</button>--%>
-                <%--</div>--%>
+                </div>  &nbsp;
+                    <button type="submit" class="btn btn-default filter-col">
+                        <span>Submit</span>
+                    </button>
             </form>
         </div>
     </div>
 </div>
 
 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
-    <span class="glyphicon glyphicon-cog"></span>Search
+    <span class="glyphicon glyphicon-search"></span>Search
 </button>

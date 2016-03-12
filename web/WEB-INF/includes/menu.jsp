@@ -18,7 +18,7 @@
 <div id="filter-panel" class="collapse filter-panel">
     <div class="panel panel-default">
         <div class="panel-body">
-            <form class="form-inline" role="form">
+            <form class="form-inline" role="form" >
                 <div class="form-group">
                     <label class="filter-col" style="margin-right:0;" >Price:</label>
                     <input type="text" class="form-control input-sm" id="search-price">
@@ -43,25 +43,18 @@
                         <option> Pork Meals</option>
                         <option> Vegetarian Meals</option>
                     </select>
-                </div> <!-- form group [order by] -->
-                <%--<div class="form-group">--%>
-                <%--<div class="checkbox" style="margin-left:10px; margin-right:10px;">--%>
-                <%--<label><input type="checkbox"> Ingested</label>--%>
-                <%--</div>--%>
-                <%--<div class="checkbox" style="margin-left:10px; margin-right:10px;">--%>
-                <%--<label><input type="checkbox"> Automated</label>--%>
-                <%--</div>--%>
-                <%--<button type="submit" class="btn btn-default filter-col">--%>
-                <%--<span class="glyphicon glyphicon-record"></span> Save Settings--%>
-                <%--</button>--%>
-                <%--</div>--%>
+                </div>
+                &nbsp;
+                <button type="submit" class="btn btn-default filter-col">
+                <span>Submit</span>
+                </button>
             </form>
         </div>
     </div>
 </div>
 
 <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#filter-panel">
-    <span class="glyphicon glyphicon-cog"></span>Search
+    <span class="glyphicon glyphicon-search"></span>Search
 </button>
 
 
