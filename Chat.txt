@@ -1,5 +1,17 @@
-Mejnun's github accaunt:
-	login: Mejnun
-	pass: capash123
-======================================================
-ymnik: Hello teamates:-)
+tomcat 8/conf/server.xml
+		  <GlobalNamingResources>
+  	    <Resource name="ds" auth="Container"
+              type="javax.sql.DataSource"
+              maxTotal="30" maxIdle="5" maxWaitMillis="10000"
+              username="root" password=""
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost/hackathon"
+              connectionProperties="useUnicode=yes;characterEncoding=utf8;"
+              removeAbandonedOnBorrow="true" removeAbandonedTimeout="60" logAbandoned="true"/>
+			</GlobalNamingResources>
+
+tomcat 8/conf/context.xml
+	<ResourceLink name="jdbc/hackathon"
+                global="ds"
+                auth="Container"
+                type="javax.sql.DataSource" />
