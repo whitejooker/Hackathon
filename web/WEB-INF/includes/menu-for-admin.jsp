@@ -51,18 +51,10 @@
                         <option> Pork Meals</option>
                         <option> Vegetarian Meals</option>
                     </select>
-                </div> <!-- form group [order by] -->
-                <%--<div class="form-group">--%>
-                <%--<div class="checkbox" style="margin-left:10px; margin-right:10px;">--%>
-                <%--<label><input type="checkbox"> Ingested</label>--%>
-                <%--</div>--%>
-                <%--<div class="checkbox" style="margin-left:10px; margin-right:10px;">--%>
-                <%--<label><input type="checkbox"> Automated</label>--%>
-                <%--</div>--%>
-                <%--<button type="submit" class="btn btn-default filter-col">--%>
-                <%--<span class="glyphicon glyphicon-record"></span> Save Settings--%>
-                <%--</button>--%>
-                <%--</div>--%>
+                </div>  &nbsp;
+                    <button type="submit" class="btn btn-default filter-col">
+                        <span>Submit</span>
+                    </button>
             </form>
         </div>
     </div>
