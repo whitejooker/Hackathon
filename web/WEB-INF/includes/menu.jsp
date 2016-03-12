@@ -2,15 +2,15 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Nowaste.az</a>
+            <a class="navbar-brand" href="/">Nowaste.az</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="/?action=register"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="/?action=login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
 
     </div>
@@ -19,16 +19,6 @@
     <div class="panel panel-default">
         <div class="panel-body">
             <form class="form-inline" role="form">
-                <%--<div class="form-group">--%>
-                <%--<label class="filter-col" style="margin-right:0;" for="pref-perpage">Rows per page:</label>--%>
-                <%--<select id="pref-perpage" class="form-control">--%>
-
-                <%--<option value="9">9</option>--%>
-                <%--<option selected="selected" value="10">10</option>--%>
-                <%--<option value="15">15</option>--%>
-
-                <%--</select>--%>
-                <%--</div> <!-- form group [rows] -->--%>
                 <div class="form-group">
                     <label class="filter-col" style="margin-right:0;" >Price:</label>
                     <input type="text" class="form-control input-sm" id="search-price">

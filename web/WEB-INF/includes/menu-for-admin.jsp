@@ -1,16 +1,15 @@
-
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Nowaste.az</a>
+            <a class="navbar-brand" href="/">Nowaste.az</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li class="active"><a href="#">Profile</a></li>
+            <li class="active"><a href="/">Home</a></li>
+            <li class="active"><a href="/?action=profile">Profile</a></li>
             <li><a href="#">About</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
+            <li><a href="/?action=exit"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
         </ul>
     </div>
 </nav>
