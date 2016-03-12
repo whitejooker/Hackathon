@@ -32,7 +32,7 @@ create table meal(
   user_id int REFERENCES user(id) ,
   picture_extension varchar(30) not null
 
-);
+)
 
 create table complain(
   id int primary key AUTO_INCREMENT ,
