@@ -1,5 +1,6 @@
 package az.hackathon.utils;
 
+import az.hackathon.models.User;
 import org.	apache.commons.lang3.StringEscapeUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +13,7 @@ public final static String PARAM_PHONE = "phone";
 public final static String PARAM_EMAIL = "email";
 public final static String PARAM_NAME = "name";
 public final static String PARAM_CITY_ID = "city_id";
+public final static String PARAM_ACTION = "action";
 
 public HttpServletRequest request;
 
