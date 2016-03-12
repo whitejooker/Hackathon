@@ -15,7 +15,7 @@ create table user(
   email VARCHAR(30) NOT NULL ,
   password varchar(100) NOT NULL ,
   city_id int REFERENCES city(id),
-  is_blocked BOOLEAN NOT NULL DEFAULT FALSE,
+  is_blocked BOOLEAN NOT NULL DEFAU LT FALSE,
   address varchar(100) not null,
   number_of_complains int not null default 0
 );
