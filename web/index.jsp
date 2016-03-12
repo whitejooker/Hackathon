@@ -8,13 +8,14 @@
 </head>
 <body>
 <c:choose>
-  <c:when test="${requestScope.isRegistered=true}">
-    <%@include  file="WEB-INF/includes/menu-for-admin.jsp" %>
+  <c:when test="${requestScope.isRegistered==true}">
+    <c:import url="WEB-INF/includes/menu-for-admin.jsp"/>
   </c:when>
   <c:otherwise>
-    <%@include  file="WEB-INF/includes/menu.jsp" %>
+    <c:import url="WEB-INF/includes/menu.jsp"/>
   </c:otherwise>
 </c:choose>
+
 
 
 
