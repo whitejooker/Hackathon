@@ -101,6 +101,8 @@ public class FoodHelper extends Helper{
         try {
             PreparedStatement statement = database.getConnection().prepareStatement(selection.getSQL());
             selection.setValuesToStatement(statement);
+            statement.setInt(6, (selection.getCurrentPage()-1)*9);
+            statement.setInt(7, selection.getCurrentPage()*9-1);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
                 listOfFood.add(createMealFromResultSet(resultSet));
