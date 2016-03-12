@@ -113,4 +113,20 @@ public class User{
     public void setNumberOfComplains(int numberOfComplains) {
         this.numberOfComplains = numberOfComplains;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", city=" + city +
+                ", isBlocked=" + isBlocked +
+                ", address='" + address + '\'' +
+                ", numberOfComplains=" + numberOfComplains +
+                '}';
+    }
 }

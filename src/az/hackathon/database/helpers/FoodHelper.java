@@ -1,9 +1,12 @@
 package az.hackathon.database.helpers;
 
 import az.hackathon.models.Food;
+import az.hackathon.models.Selection;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Qalib on 3/12/2016.
@@ -58,7 +61,7 @@ public class FoodHelper extends Helper{
         return food;
     }
 
-    public Food SaveFood(Food food){
+    public Food saveFood(Food food){
 
 
         try{
@@ -77,5 +80,37 @@ public class FoodHelper extends Helper{
         return food;
     }
 
+    public void updateFood(Food food){
+
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement( "UPDATE meal SET" +
+                    " name = ?, description=?, price=?, state=?, type_id=?, amount=?, is_active=?, user_id=?, picture_extension=? WHERE id=?" );
+            setValuesIntoPreparedStatement(statement, food);
+            statement.setInt( 10, food.getId( ) );
+            statement.executeUpdate( );
+        }catch( SQLException e ){
+            System.out.println( "Can't update a user " + food);
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+
+    }
+
+    public List<Food> getAllFoodBySelection(Selection selection){
+        List<Food> listOfFood = new ArrayList<>();
+        try {
+            PreparedStatement statement = database.getConnection().prepareStatement(selection.getSQL());
+            selection.setValuesToStatement(statement);
+            ResultSet resultSet = statement.executeQuery();
+            while(resultSet.next()){
+                listOfFood.add(createMealFromResultSet(resultSet));
+            }
+
+        }catch (Exception e){
+            System.out.println("Can't get Food by selection : " + selection);
+        }
+        return listOfFood;
+    }
 
 }

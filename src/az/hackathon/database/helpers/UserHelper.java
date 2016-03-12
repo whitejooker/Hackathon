@@ -67,10 +67,10 @@ public class UserHelper extends Helper{
         return new User( );
     }
 
-    public User getUser(String username1){
+    public User getUser(String username){
         try{
             PreparedStatement statement = database.getConnection( ).prepareStatement( "SELECT * FROM user WHERE username=? " );
-            statement.setString( 1, username1 );
+            statement.setString( 1, username );
             ResultSet rs = statement.executeQuery( );
             if( rs.next( ) ) return createUserFromResultSet( rs );
         }catch( SQLException e ){
@@ -101,7 +101,7 @@ public class UserHelper extends Helper{
     }
 
 
-    public void updateUser( User user, String field ){
+    public void updateUser( User user){
 
         try{
             PreparedStatement statement = database.getConnection( ).prepareStatement( "UPDATE user SET" +
@@ -110,7 +110,7 @@ public class UserHelper extends Helper{
             statement.setInt( 10, user.getId( ) );
             statement.executeUpdate( );
         }catch( SQLException e ){
-            System.out.println( "Can't update a user " + user + " \n Field: " + field );
+            System.out.println( "Can't update a user " + user);
             e.printStackTrace( );
         }finally{
             database.close( );
