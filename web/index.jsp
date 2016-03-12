@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
   <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -6,7 +7,18 @@
   <title>$Title$</title>
 </head>
 <body>
-<%@include  file="WEB-INF/includes/menu.jsp" %>
+<c:choose>
+  <c:when test="${requestScope.isRegistered==true}">
+    <c:import url="WEB-INF/includes/menu-for-admin.jsp"/>
+  </c:when>
+  <c:otherwise>
+    <c:import url="WEB-INF/includes/menu.jsp"/>
+  </c:otherwise>
+</c:choose>
+
+
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-3">
