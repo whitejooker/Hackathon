@@ -13,13 +13,13 @@ import java.util.List;
  */
 public class CityHelper extends Helper{
 
-private static final String id = "id";
-private static final String name = "name";
+private static final String ID = "id";
+private static final String NAME = "name";
 
 private City createCityFromResultSet( ResultSet resultset ) throws SQLException{
 	City city = new City( );
-	city.setId( resultset.getInt( id ) );
-	city.setName( resultset.getString( name ) );
+	city.setId( resultset.getInt(ID) );
+	city.setName( resultset.getString(NAME) );
 	return city;
 }
 

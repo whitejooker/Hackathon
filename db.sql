@@ -1,7 +1,7 @@
 DROP TABLE user;
 DROP TABLE city;
 DROP TABLE complain;
-DROP TABLE meal;
+DROP TABLE food;
 
 CREATE TABLE city (
   id   INT PRIMARY KEY AUTO_INCREMENT,
@@ -21,10 +21,11 @@ CREATE TABLE user (
   number_of_complains INT          NOT NULL DEFAULT 0
 );
 
-CREATE TABLE meal (
+CREATE TABLE food (
   id                INT PRIMARY KEY AUTO_INCREMENT,
   name              VARCHAR(30) NOT NULL,
   description       VARCHAR(1000),
+  price             DOUBLE NOT NULL ,
   date              TIMESTAMP,
   state             INT         NOT NULL,
   type_id           INT         NOT NULL,
