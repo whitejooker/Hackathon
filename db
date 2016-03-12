@@ -1,3 +1,7 @@
+drop table user;
+drop table city;
+drop table complain;
+drop table meal;
 create table city(
   id int primary key AUTO_INCREMENT,
   name varchar(100) NOT NULL
@@ -12,6 +16,7 @@ create table user(
   password varchar(100) NOT NULL ,
   city_id int REFERENCES city(id),
   is_blocked BOOLEAN NOT NULL DEFAULT FALSE,
+  address varchar(100) not null,
   number_of_complains int not null default 0
 );
 
