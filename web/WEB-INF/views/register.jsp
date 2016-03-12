@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page session="false"%>
 <html>
 <head>
@@ -11,7 +12,7 @@
 <%@include  file="../includes/menu-for-login-and-register.jsp" %>
         <div class="container">
             <div class="row">
-                <form role="form" action="/?action=register">
+                <form role="form" action="/?action=register" method="post">
                     <div class="col-lg-6">
                         <br>
                         <div class="form-group">
@@ -83,16 +84,15 @@
                         <input type="submit" name="submit" id="submit" value="Register" class="btn btn-info pull-right">
                     </div>
                 </form>
-                <%--<div class="col-lg-5 col-md-push-1">--%>
-                    <%--<div class="col-md-12">--%>
-                        <%--<div class="alert alert-success">--%>
-                            <%--<strong><span class="glyphicon glyphicon-ok"></span> Success! Message sent.</strong>--%>
-                        <%--</div>--%>
-                        <%--<div class="alert alert-danger">--%>
-                            <%--<span class="glyphicon glyphicon-remove"></span><strong> Error! Please check all page inputs.</strong>--%>
-                        <%--</div>--%>
-                    <%--</div>--%>
-                <%--</div>--%>
+                <div class="col-lg-5 col-md-push-1">
+                    <div class="col-md-12">
+                        <div class="alert alert-danger">
+                            <c:forEach var="message" items="${requestScope.messages}">
+                                <span class="glyphicon glyphicon-remove"></span><strong> ${message} </strong>
+                            </c:forEach>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 <div style="height: 50%;"></div>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="false"%>
 <html>
@@ -34,16 +35,9 @@
                 <input type="submit" name="submit" id="submit" value="Log in" class="btn btn-info pull-right">
             </div>
         </form>
-        <%--<div class="col-lg-5 col-md-push-1">--%>
-        <%--<div class="col-md-12">--%>
-        <%--<div class="alert alert-success">--%>
-        <%--<strong><span class="glyphicon glyphicon-ok"></span> Success! Message sent.</strong>--%>
-        <%--</div>--%>
-        <%--<div class="alert alert-danger">--%>
-        <%--<span class="glyphicon glyphicon-remove"></span><strong> Error! Please check all page inputs.</strong>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
+        <c:forEach var="message" items="${requestScope.messages}">
+            <span class="glyphicon glyphicon-remove"></span><strong> ${message} </strong>
+        </c:forEach>
     </div>
 </div>
 <%@include  file="../includes/footer.jsp" %>

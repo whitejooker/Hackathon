@@ -31,6 +31,8 @@
         .glyphicon-thumbs-down:hover{ color: #E10000; cursor:pointer;}
         .counter{ color:#333333;}
         .thumbnail img{height:200px;}
+
+        
     </style>
 
 </head>
@@ -44,40 +46,41 @@
     </c:otherwise>
 </c:choose>
 
-
-
-
 <div class="container">
-    <div class="row">
-        <c:forEach var="food" items="${requestScope.listoffoods}">
-            <div class="col-sm-4 col-lg-4 col-md-4">
-                <div class="thumbnail">
-                    <img src="/image/${food.image}" alt="" />
-                    <div class="caption">
-                        <h4><a href="<c:url value="/?id=${food.id}" /> "> ${food.title}</a></h4>
-                        <p>${food.description}.</p>
 
-                    </div>
-                    <div class="ratings">
-                        <p class="pull-right"></p>
-                        <!-- Like Icon HTML -->
-                        <span class="glyphicon glyphicon-thumbs-up" onClick="Like_It()"></span>&nbsp;
-                        <!-- Like Counter -->
-                        <span class="counter" id="like_count">10638</span>&nbsp;
+    <div class="row" >
+        <!-- Profile -->
+        <div class="food_profile">
+            <img src="/image/${requestScope.foodimage}" alt=""  border="solid" width="500px" height="380px">
 
-                        <!-- view Icon HTML -->
 
-                        <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
-                        <span class="counter" id="view_count">10638</span>&nbsp;
-                    </div>
-                </div>
-            </div>
-        </c:forEach>
+        </div>
+
+
+        <!-- Info -->
+        <div class="book_info">
+            <h1>${requestScope.food.title}</h1>
+
+            <h3>Author: ${book.author}</h3>
+            <h3>Publisher:  ${book.publisher}</h3>
+            <h3>Genre:  ${book.genre}</h3>
+            <h3>Edition:  ${book.edition}</h3>
+            <h3>PageCount:</h3>
+            <h3>Release Date:</h3>
+        </div>
+
+
+
+        <!-- Event Text -->
+        <div class="description" >
+            <h4><strong>Description:</strong> ${book.description}</h4>
+        </div>
     </div>
+
 </div>
 
 </div>
-<%@include  file="../includes/pagination.jsp" %>
+<div style="height: 40%;"></div>
 
 
 <%@include  file="../includes/footer.jsp" %>
