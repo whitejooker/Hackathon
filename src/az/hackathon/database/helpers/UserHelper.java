@@ -102,10 +102,12 @@ public class UserHelper extends Helper{
 
 
     public void updateUser( User user, String field ){
+
         try{
-            PreparedStatement statement = database.getConnection( ).prepareStatement( "UPDATE user SET " + field + "=? WHERE id=?" );
-            statement.setString( 1, field );
-            statement.setInt( 2, user.getId( ) );
+            PreparedStatement statement = database.getConnection( ).prepareStatement( "UPDATE user SET" +
+                    " username = ?, name=?, phone=?, email=?, password=?, city_id=?, is_blocked=?, address=?, number_of_complains=? WHERE id=?" );
+            setValuesIntoPreparedStatement(statement, user);
+            statement.setInt( 10, user.getId( ) );
             statement.executeUpdate( );
         }catch( SQLException e ){
             System.out.println( "Can't update a user " + user + " \n Field: " + field );
