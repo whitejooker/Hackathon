@@ -7,6 +7,9 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Hackathon" />
         </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="S:/web/drivers and libs/AC-Lang (3.4).jar" />
+        </element>
       </element>
     </root>
   </artifact>

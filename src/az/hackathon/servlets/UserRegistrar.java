@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "HelloSpeaker", urlPatterns = { "" })
-public class HelloSpeaker extends HttpServlet{
-
+@WebServlet(name = "UserRegistrar", urlPatterns = { "/registration", "/registration/" })
+public class UserRegistrar extends HttpServlet{
 // overridden
 protected void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
-	request.setAttribute( ApplicationConstants.ATTR_TEST, "I'm here! :)" );
-	request.getRequestDispatcher( ApplicationConstants.JSP_ROOT ).forward( request, response );
+	request.getRequestDispatcher( ApplicationConstants.JSP_REGISTRATION ).forward( request, response );
+}
+
+protected void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
+
 }
 }
