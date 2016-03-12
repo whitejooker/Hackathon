@@ -11,7 +11,7 @@
 <%@include  file="../includes/menu-for-login-and-register.jsp" %>
 <div class="container">
     <div class="row">
-        <form role="form" action="/?action=add_food" method="post">
+        <form role="form" action="/?action=add" method="post">
             <div class="col-lg-6">
                 <br>
 
