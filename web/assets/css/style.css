@@ -1,0 +1,46 @@
+.footer
+{
+    background-color: black;
+    width: 100%;
+    height: 100px;
+}
+
+.container>div
+{
+    margin-bottom: 40px;
+}
+
+.container img
+{
+    border-radius: 50%;
+    transition: border-radius 1s;
+}
+
+.container img:hover{
+    border-radius: 0;
+}
+
+.container
+{
+    height: 80%;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    height: 8%;
+    background-color: black;
+    border-radius: 3%;
+}
+.footer-copyright
+{
+    margin-top: 6px;
+}
+.footer-company-name
+{
+    color: #ffffff;
+}
+@media (max-height:800px){
+    footer { position: static; }
+    header { padding-top:40px; }
+}
