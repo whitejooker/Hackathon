@@ -5,7 +5,7 @@ package az.hackathon.models;
  */
 
 public class User{
-    private int id;
+    private int id=-1;
     private String username;
     private String name;
     private String phone;

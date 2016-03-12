@@ -13,46 +13,47 @@ import java.util.List;
  */
 public class CityHelper extends Helper{
 
-    private static final String id = "id";
-    private static final String name = "name";
+private static final String id = "id";
+private static final String name = "name";
 
-    private City createCityFromResultSet(ResultSet resultset) throws SQLException{
-        City city = new City();
-        city.setId(resultset.getInt(id));
-        city.setName(resultset.getString(name));
-        return city;
-    }
+private City createCityFromResultSet( ResultSet resultset ) throws SQLException{
+	City city = new City( );
+	city.setId( resultset.getInt( id ) );
+	city.setName( resultset.getString( name ) );
+	return city;
+}
 
-    public City getCity(int id) throws SQLException {
+public City getCity( int id ){
 
-        try {
-            PreparedStatement statement = database.getConnection().prepareStatement("SELECT * FROM city WHERE id=?");
-            statement.setInt(1, id);
-            ResultSet rs = statement.executeQuery();
-            if (rs.next()) return createCityFromResultSet(rs);
-        } catch (SQLException e) {
-            System.out.println("Can't get the city: " + id);
-            e.printStackTrace();
-        } finally {
-            database.close();
-        }
-        return new City();
-    }
+	try{
+		PreparedStatement statement = database.getConnection( ).prepareStatement( "SELECT * FROM city WHERE id=?" );
+		statement.setInt( 1, id );
+		ResultSet rs = statement.executeQuery( );
+		if( rs.next( ) ) return createCityFromResultSet( rs );
+	}catch( SQLException e ){
+		System.out.println( "Can't get the city: " + id );
+		e.printStackTrace( );
+	}finally{
+		database.close( );
+	}
+	return new City( );
+}
 
-    List<City> GetAllCity() throws SQLException{
-        List<City> listOfCity = new ArrayList<>();
-        try {
-            PreparedStatement statement = database.getConnection().prepareStatement("SELECT * FROM city");
-            ResultSet rs = statement.executeQuery();
-            while(rs.next()) {
-                listOfCity.add(createCityFromResultSet(rs));
-            }
-        } catch (SQLException e) {
-            System.out.println("Can't get the list of cities: " + e.getMessage());
-            e.printStackTrace();
-        } finally {
-            database.close();
-        }
-        return listOfCity;
-    }
+// getters and setters
+public List<City> getAllCities( ){
+	List<City> listOfCity = new ArrayList<>( );
+	try{
+		PreparedStatement statement = database.getConnection( ).prepareStatement( "SELECT * FROM city" );
+		ResultSet rs = statement.executeQuery( );
+		while( rs.next( ) ){
+			listOfCity.add( createCityFromResultSet( rs ) );
+		}
+	}catch( SQLException e ){
+		System.out.println( "Can't get the list of cities: " + e.getMessage( ) );
+		e.printStackTrace( );
+	}finally{
+		database.close( );
+	}
+	return listOfCity;
+}
 }

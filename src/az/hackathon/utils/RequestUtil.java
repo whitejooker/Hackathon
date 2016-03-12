@@ -1,6 +1,6 @@
 package az.hackathon.utils;
 
-import org.apache.commons.lang3.StringEscapeUtils;
+import org.	apache.commons.lang3.StringEscapeUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -11,6 +11,7 @@ public final static String PARAM_PASSWORD_CONFIRM = "password_confirm";
 public final static String PARAM_PHONE = "phone";
 public final static String PARAM_EMAIL = "email";
 public final static String PARAM_NAME = "name";
+public final static String PARAM_CITY_ID = "city_id";
 
 public HttpServletRequest request;
 

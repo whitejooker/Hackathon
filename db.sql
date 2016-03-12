@@ -1,45 +1,48 @@
-drop table user;
-drop table city;
-drop table complain;
-drop table meal;
-create table city(
-  id int primary key AUTO_INCREMENT,
-  name varchar(100) NOT NULL
+DROP TABLE user;
+DROP TABLE city;
+DROP TABLE complain;
+DROP TABLE meal;
+
+CREATE TABLE city (
+  id   INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL
 );
 
-create table user(
-  id int PRIMARY KEY AUTO_INCREMENT ,
-  username varchar(30) NOT NULL ,
-  name varchar(30) NOT NULL ,
-  phone VARCHAR(30) NOT NULL ,
-  email VARCHAR(30) NOT NULL ,
-  password varchar(100) NOT NULL ,
-  city_id int REFERENCES city(id),
-  is_blocked BOOLEAN NOT NULL DEFAU LT FALSE,
-  address varchar(100) not null,
-  number_of_complains int not null default 0
+CREATE TABLE user (
+  id                  INT PRIMARY KEY       AUTO_INCREMENT,
+  username            VARCHAR(30)  NOT NULL,
+  name                VARCHAR(30)  NOT NULL,
+  phone               VARCHAR(30)  NOT NULL,
+  email               VARCHAR(30)  NOT NULL,
+  password            VARCHAR(100) NOT NULL,
+  city_id             INT REFERENCES city (id),
+  is_blocked          BOOLEAN      NOT NULL DEFAULT FALSE,
+  address             VARCHAR(100) NOT NULL,
+  number_of_complains INT          NOT NULL DEFAULT 0
 );
 
-create table meal(
-  id int PRIMARY KEY AUTO_INCREMENT ,
-  name VARCHAR(30) NOT NULL ,
-  description varchar(1000) ,
-  date TIMESTAMP ,
-  state int not null ,
-  type_id int NOT NULL ,
-  amount int NOT NULL ,
-  is_active BOOLEAN DEFAULT true,
-  user_id int REFERENCES user(id) ,
-  picture_extension varchar(30) not null
-
-)
-
-create table complain(
-  id int primary key AUTO_INCREMENT ,
-  name varchar(30) not null ,
-  user_id int REFERENCES user(id),
-  date TIMESTAMP,
-  description varchar(300),
-  result BOOLEAN
+CREATE TABLE meal (
+  id                INT PRIMARY KEY AUTO_INCREMENT,
+  name              VARCHAR(30) NOT NULL,
+  description       VARCHAR(1000),
+  date              TIMESTAMP,
+  state             INT         NOT NULL,
+  type_id           INT         NOT NULL,
+  amount            INT         NOT NULL,
+  is_active         BOOLEAN         DEFAULT TRUE,
+  user_id           INT REFERENCES user (id),
+  picture_extension VARCHAR(30) NOT NULL
 
 );
+
+CREATE TABLE complain (
+  id          INT PRIMARY KEY AUTO_INCREMENT,
+  name        VARCHAR(30) NOT NULL,
+  user_id     INT REFERENCES user (id),
+  date        TIMESTAMP,
+  description VARCHAR(300),
+  result      BOOLEAN
+
+);
+
+INSERT INTO city VALUE (NULL, "Baku"), (NULL, "Ganja");

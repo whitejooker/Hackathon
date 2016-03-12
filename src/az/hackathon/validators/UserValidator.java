@@ -1,5 +1,9 @@
 package az.hackathon.validators;
 
+import az.hackathon.database.helpers.CityHelper;
+import az.hackathon.database.helpers.UserHelper;
+import az.hackathon.models.City;
+import az.hackathon.models.User;
 import az.hackathon.utils.RequestUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,29 +15,62 @@ public static int MAX_USERNAME_LENGTH = 20;
 public static int MAX_PASSWORD_LENGTH = 20;
 public static int MIN_USERNAME_LENGTH = 5;
 public static int MIN_PASSWORD_LENGTH = 5;
+public static String USERNAME_PATTERN = String.format( "[a-zA-Z0-9]{%d,%d}$", MIN_USERNAME_LENGTH, MAX_USERNAME_LENGTH );
+public static String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 RequestUtil util;
 private List<String> errorMessages = new ArrayList<>( );
+private User forSaving = new User( );
 
-private UserValidator( HttpServletRequest request ){
+public UserValidator( HttpServletRequest request ){
 	util = new RequestUtil( request );
-	
 }
 
 private boolean checkUsername( ){
-	final String username = util.getXSSsafeStringFromRequest( RequestUtil.PARAM_USERNAME ).toLowerCase( );
-	return !( username.length( ) < MIN_USERNAME_LENGTH || username.length( ) > MAX_USERNAME_LENGTH );
+	forSaving.setUsername( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_USERNAME ).toLowerCase( ) );
+	boolean flag = forSaving.getUsername( ).length( ) >= MIN_USERNAME_LENGTH && forSaving.getUsername( ).length( ) <= MAX_USERNAME_LENGTH;
+	return forSaving.getUsername( ).matches( USERNAME_PATTERN );
 }
 
 private boolean checkPassword( ){
-	final String passwd = util.getXSSsafeStringFromRequest( RequestUtil.PARAM_PASSWORD );
+	forSaving.setPassword( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_PASSWORD ) );
 	final String confirm = util.getXSSsafeStringFromRequest( RequestUtil.PARAM_PASSWORD_CONFIRM );
-	return passwd.length( ) <= MAX_PASSWORD_LENGTH && passwd.length( ) >= MIN_PASSWORD_LENGTH && passwd.equals( confirm );
+	return forSaving.getPassword( ).length( ) <= MAX_PASSWORD_LENGTH && forSaving.getPassword( ).length( ) >= MIN_PASSWORD_LENGTH && forSaving.getPassword( ).equals( confirm );
+}
+
+private boolean checkEmail( ){
+	forSaving.setEmail( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_EMAIL ) );
+	return forSaving.getEmail( ).matches( EMAIL_PATTERN );
 }
 
 // getters and setters
+private int getCityId( ){
+	int id = -1;
+	try{
+		id = Integer.parseInt( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_CITY_ID ) );
+	}catch( NumberFormatException ignored ){ }
+	return id;
+}
+
+public List<String> getErrorMessages( ){ return errorMessages; }
+
 public boolean isValid( ){
 	boolean flag = true;
-	if( checkUsername( ) ) errorMessages.add( "Username must be from 5-20 A-z0-9 symbols." );
+	if( !checkUsername( ) ){
+		errorMessages.add( "Username is wrong." );
+		flag = false;
+	}
+	if( !checkPassword( ) ){
+		errorMessages.add( "Password is wrong." );
+		flag = false;
+	}
+	if( !checkEmail( ) ){
+		errorMessages.add( "Email is wrong." );
+		flag = false;
+	}
+	forSaving.setName( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_NAME ) );
+	forSaving.setPhone( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_PHONE ) );
+	City city = new CityHelper( ).getCity( getCityId() );
+	forSaving.setCity( city );
 	return flag;
 }
 }
