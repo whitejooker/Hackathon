@@ -104,10 +104,28 @@ public class UserHelper extends Helper{
         }finally{
             database.close( );
         }
-        
+
         return user;
     }
 
 
+    public void updateUser( User user, String field ){
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement( "UPDATE user SET " + field + "=? WHERE id=?" );
+            statement.setString( 1, field );
+            statement.setInt( 2, user.getId( ) );
+            statement.executeUpdate( );
+        }catch( SQLException e ){
+            System.out.println( "Can't update a user " + user + " \n Field: " + field );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+    }
+
+    public static boolean userExist( String login ){
+        User wanted = new UserHelper( ).getUser( login );
+        return wanted.getId( ) != -1;
+    }
 
 }
