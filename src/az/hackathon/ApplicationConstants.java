@@ -6,6 +6,7 @@ String JDBC_URI = "java:comp/env/jdbc/hackathon";
 String JSP_LOGIN = "login.jsp";
 String JSP_REGISTRATION = "register.jsp";
 String JSP_HOME_PAGE="homepage.jsp";
+String JSP_ADD_FOOD = "add_food.jsp";
 
 String ATTR_MESSAGES = "messages";
 String ATTR_ALL_CITIES = "allCities";

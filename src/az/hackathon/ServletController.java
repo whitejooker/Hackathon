@@ -20,7 +20,7 @@ import java.util.Collections;
 public class ServletController extends HttpServlet{
 final static String ACTION_REGISTER = "register";
 final static String ACTION_LOGIN = "login";
-final static String ACTION_SETTINGS = "settings";
+final static String ACTION_ADD_FOOD = "addFood";
 
 public void process( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 	final String action = request.getParameter( RequestUtil.PARAM_ACTION );
@@ -51,15 +51,19 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 				forward = false;
 			}else request.setAttribute( ApplicationConstants.ATTR_MESSAGES, Collections.singletonList( "Password or login is wrong" ) );
 		}
-	}else ;
+	}else if( action.equals( ACTION_ADD_FOOD ) && request.getSession( ).getAttribute( ApplicationConstants.ATTR_IS_LOGGED ).equals( true ) ){
+		path = ApplicationConstants.JSP_ADD_FOOD;
 
-	if( path.equals( ApplicationConstants.JSP_HOME_PAGE )){
+	}
+
+
+	if( path.equals( ApplicationConstants.JSP_HOME_PAGE ) ){
 		Selection selection = (Selection) request.getSession( ).getAttribute( ApplicationConstants.ATTR_SELECTION );
 		if( request.getParameter( ApplicationConstants.ATTR_SUBMIT ) != null || selection == null ){
 			selection = new SelectionValidator( ).PrepareSelection( request );
 			request.getSession( ).setAttribute( ApplicationConstants.ATTR_SELECTION, selection );
 		}
-		request.setAttribute( ApplicationConstants.ATTR_MEALS, new FoodHelper().getAllFoodBySelection( selection ) );
+		request.setAttribute( ApplicationConstants.ATTR_MEALS, new FoodHelper( ).getAllFoodBySelection( selection ) );
 	}
 
 	if( forward ) request.getRequestDispatcher( "/WEB-INF/views/" + path ).forward( request, response );
