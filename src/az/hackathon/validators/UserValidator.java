@@ -11,6 +11,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class UserValidator{
 public static int MAX_USERNAME_LENGTH = 20;
 public static int MAX_PASSWORD_LENGTH = 20;
