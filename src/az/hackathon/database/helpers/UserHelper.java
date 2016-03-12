@@ -6,6 +6,7 @@ import az.hackathon.models.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by Qalib on 3/12/2016.
@@ -40,7 +41,7 @@ public class UserHelper extends Helper{
         statement.setInt(9, user.getNumberOfComplains());
     }
 
-    private User CreateUserFromResultSet(ResultSet resultSet) throws SQLException{
+    private User createUserFromResultSet(ResultSet resultSet) throws SQLException{
         User user = new User();
         City city = new City();
         CityHelper ch = new CityHelper();
@@ -58,6 +59,54 @@ public class UserHelper extends Helper{
         return user;
     }
 
+
+    public User getUser(int id){
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement( "SELECT * FROM user WHERE id=? " );
+            statement.setInt( 1, id );
+            ResultSet rs = statement.executeQuery( );
+            if( rs.next( ) ) return createUserFromResultSet( rs );
+        }catch( SQLException e ){
+            System.out.println( "Can't get the user: " + id );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+        return new User( );
+    }
+
+    public User getUser(String username1){
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement( "SELECT * FROM user WHERE username=? " );
+            statement.setString( 1, username1 );
+            ResultSet rs = statement.executeQuery( );
+            if( rs.next( ) ) return createUserFromResultSet( rs );
+        }catch( SQLException e ){
+            System.out.println( "Can't get the user: " + username );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+        return new User( );
+    }
+
+    public User saveUser( User user ){
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement( "INSERT INTO user VALUES(NULL,?,?,?,?,?,?,?,?,? )", Statement.RETURN_GENERATED_KEYS );
+            setValuesIntoPreparedStatement( statement, user);
+            statement.executeUpdate( );
+            ResultSet generatedKeys = statement.getGeneratedKeys( );
+            generatedKeys.next( );
+            user.setId( generatedKeys.getInt( 1 ) );
+        }catch( SQLException e ){
+            System.out.println( "Can't save user: " + user );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+        
+        return user;
+    }
 
 
 

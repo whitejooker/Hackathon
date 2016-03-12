@@ -24,12 +24,11 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://S:/web/drivers and libs/AC-Lang (3.4).jar!/" />
+          <root url="jar://$USER_HOME$/Downloads/commons-lang3-3.4.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="commons-lang3-3.4" level="project" />
   </component>
 </module>
