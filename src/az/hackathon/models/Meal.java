@@ -16,4 +16,18 @@ public class Meal {
     private boolean isActive;
     private Type type;
 
+    public Meal() {
+    }
+
+    public Meal(int id, int state, String description, String name, int amount, Date date, String pictureExtension, boolean isActive, Type type) {
+        this.id = id;
+        this.state = state;
+        this.description = description;
+        this.name = name;
+        this.amount = amount;
+        this.date = date;
+        this.pictureExtension = pictureExtension;
+        this.isActive = isActive;
+        this.type = type;
+    }
 }
