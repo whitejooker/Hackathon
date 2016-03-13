@@ -35,45 +35,57 @@
         .counter{ color:#333333;}
         .thumbnail img{height:200px;}
 
-        
+        .food_profile{
+            float: left;
+
+        }
+
+        .food_info {
+            float: left;
+            padding-left:  50px;
+            padding-right: 50px;
+            max-width: 100ch;
+        }
+
+
+
+        .description{
+            float: left;
+            clear: left;
+            padding: 20px;
+        }
+
     </style>
 
 </head>
 <body>
 
-
-        <c:import url="../includes/menu.jsp"/>
-
-
+<c:import url="../includes/menu.jsp"/>
 
 <div class="container">
 
     <div class="row" >
         <!-- Profile -->
         <div class="food_profile">
-            <img src="/image/${requestScope.foodimage}" alt=""  border="solid" width="500px" height="380px">
+            <img src="" alt=""  border="solid" width="500px" height="380px">
 
 
         </div>
 
 
         <!-- Info -->
-        <div class="book_info">
-            <h1>${requestScope.food.name}</h1>
-<!--
-            <h3>Author: ${book.author}</h3>
-            <h3>Publisher:  ${book.publisher}</h3>
-            <h3>Genre:  ${book.genre}</h3>
-            <h3>Edition:  ${book.edition}</h3>
-            <h3>PageCount:</h3>
-            <h3>Release Date:</h3> -->
+        <div class="food_info">
+            <h1>Food Title:&nbsp;${requestScope.food.name}</h1>
+            <h1>State:&nbsp;${requestScope.food.state}</h1>
+            <h1>Amount:&nbsp;${requestScope.food.amount}</h1>
+            <h1>Price:&nbsp;${requestScope.food.price} $</h1>
         </div>
 
 
 
         <!-- Event Text -->
         <div class="description" >
-            <h4><strong>Description:</strong> ${book.description}</h4>
+            <h4><strong>Description:&nbsp;</strong> ${requestScope.food.description}</h4>
         </div>
     </div>
 

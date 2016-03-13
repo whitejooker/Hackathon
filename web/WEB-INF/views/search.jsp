@@ -32,7 +32,6 @@
                     <div class="caption">
                         <h4><a href="<c:url value="/?action=viewfood&id=${food.id}" /> "> ${food.name}</a></h4>
                         <p>${food.description}.</p>
-
                     </div>
                 </div>
             </div>

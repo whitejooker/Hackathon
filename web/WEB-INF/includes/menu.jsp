@@ -32,9 +32,8 @@
         </c:choose>
         <form class="navbar-form navbar-right"  action="?action=search">
             <div class="form-group">
-                <input type="text" class="form-control" name="search" placeholder="Search">
+                <input type="text" class="form-control"  id="search" name="?action=search" placeholder="Search">
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
         </form>
     </div>
 </nav>
