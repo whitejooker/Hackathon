@@ -208,12 +208,26 @@ public class FoodHelper extends Helper{
                 listOfFood.add(createMealFromResultSet(rs));
             }
         }catch( SQLException e){
-            System.out.println( "Can't find number of food " + e.getMessage() );
+            System.out.println( "Can't find user's food " + e.getMessage() );
             e.printStackTrace( );
         }finally{
             database.close( );
         }
         return listOfFood;
     }
+
+    public void deleteFood(Food food){
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement("delete from meal where id=?");
+            statement.setInt(1, food.getId());
+            int ret = statement.executeUpdate();
+        }catch( SQLException e){
+            System.out.println( "Can't delete food" + e.getMessage() );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+    }
+
 
 }

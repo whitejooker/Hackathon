@@ -23,6 +23,7 @@ public class RequestUtil {
     public static final String PARAM_ID = "id";
     public static final String PARAM_DESCRIPTION = "description";
     public static final String PARAM_SEARCH_STRING = "search";
+    public static final String PARAM_REMOVE_ID = "id";
 
     public HttpServletRequest request;
 

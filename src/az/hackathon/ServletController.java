@@ -38,6 +38,7 @@ public class ServletController extends HttpServlet {
     final static String ACTION_FILTER = "filter";
     final static String ACTION_SEARCH = "search";
     final static String ACTION_MYFOODS = "myfoods";
+    final static String ACTION_REMOVEFOOD = "removefood";
 
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String action = request.getParameter(RequestUtil.PARAM_ACTION);
@@ -103,6 +104,18 @@ public class ServletController extends HttpServlet {
         }
 
         else if(action.equals(ACTION_MYFOODS)){
+            User user = (User) request.getSession().getAttribute(ApplicationConstants.ATTR_USER);
+            List<Food> listOfFood = new ArrayList<>();
+            listOfFood = new FoodHelper().SeaarchFoodByUser(user);
+            request.setAttribute(ApplicationConstants.ATTR_MYFOODS, listOfFood);
+            path = ApplicationConstants.JSP_MYFOODS;
+            forward = true;
+        }
+
+        else if(action.equals(ACTION_REMOVEFOOD)){
+            int id1 = Integer.parseInt(request.getParameter(RequestUtil.PARAM_REMOVE_ID));
+            Food food = new FoodHelper().getFood(id1);
+            new FoodHelper().deleteFood(food);
             User user = (User) request.getSession().getAttribute(ApplicationConstants.ATTR_USER);
             List<Food> listOfFood = new ArrayList<>();
             listOfFood = new FoodHelper().SeaarchFoodByUser(user);
