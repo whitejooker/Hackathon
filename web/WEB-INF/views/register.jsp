@@ -9,7 +9,7 @@
     <%--<link rel="stylesheet" href="../assets/css/register.css">--%>
 </head>
 <body>
-<%@include file="../includes/menu-for-login-and-register.jsp" %>
+<%@include file="../includes/menu.jsp" %>
 <div class="container">
     <div class="row">
         <form role="form" method="post" action="/?action=register">
@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label>Confirm Password</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required autocomplete="off">
+                        <input type="password" class="form-control" id="password_confirm" name="password_confirm" placeholder="Confirm Password" required autocomplete="off">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                 <div class="form-group">
                     <label>City</label>
                     <div class="input-group">
-                        <input type="text" class="form-control" id="city_id" name="city" placeholder="Enter City" required autocomplete="off">
+                        <input type="text" class="form-control" id="city_id" name="city_id" placeholder="Enter City" required autocomplete="off">
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>

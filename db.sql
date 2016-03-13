@@ -22,7 +22,7 @@ CREATE TABLE user (
 );
 
 DROP TABLE food;
-CREATE TABLE food (
+CREATE TABLE meal (
   id                INT PRIMARY KEY AUTO_INCREMENT,
   name              VARCHAR(30) NOT NULL,
   description       VARCHAR(1000),

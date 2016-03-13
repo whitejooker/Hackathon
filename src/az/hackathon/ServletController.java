@@ -8,6 +8,7 @@ import az.hackathon.utils.RequestUtil;
 import az.hackathon.validators.MealValidator;
 import az.hackathon.validators.SelectionValidator;
 import az.hackathon.validators.UserValidator;
+import javafx.application.Application;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -15,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collections;
 
@@ -23,6 +25,8 @@ import java.util.Collections;
 public class ServletController extends HttpServlet{
 final static String ACTION_REGISTER = "register";
 final static String ACTION_LOGIN = "login";
+final static String ACTION_LOGOUT = "exit";
+final static String ACTION_ABOUT = "about";
 final static String ACTION_ADD_FOOD = "addFood";
 
 public void process( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
@@ -54,7 +58,24 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 				forward = false;
 			}else request.setAttribute( ApplicationConstants.ATTR_MESSAGES, Collections.singletonList( "Password or login is wrong" ) );
 		}
-	}else if( action.equals( ACTION_ADD_FOOD ) && ( (Boolean) request.getAttribute( ApplicationConstants.ATTR_IS_LOGGED ) ).equals( Boolean.TRUE ) ){
+	}
+	else if( action.equals( ACTION_ABOUT ) ) {
+		path = ApplicationConstants.JSP_ABOUT;
+		request.setAttribute(ApplicationConstants.ATTR_ABOUT, true);
+		forward = true;
+	}
+
+	else if( action.equals( ACTION_LOGOUT ) ) {
+		HttpSession session = request.getSession();
+		session.removeAttribute(ApplicationConstants.ATTR_USER);
+		session.invalidate();
+		path = "/";
+		request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE, true);
+		forward = false;
+	}
+
+
+	else if( action.equals( ACTION_ADD_FOOD ) && ( (Boolean) request.getAttribute( ApplicationConstants.ATTR_IS_LOGGED ) ).equals( Boolean.TRUE ) ){
 		path = ApplicationConstants.JSP_ADD_FOOD;
 		MealValidator validator = new MealValidator( request );
 		if(validator.isValid()){

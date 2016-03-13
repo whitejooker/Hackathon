@@ -20,7 +20,7 @@ public class Database{
         try{
             getConnection( );
         }catch( SQLException e ){
-            System.out.println( "Can't create a Database object" );
+            System.out.println( "Can't create a Database object" + e.getMessage());
             e.printStackTrace( );
         }
     }
@@ -39,6 +39,9 @@ public class Database{
 
     // getters and setters
     public synchronized Connection getConnection( ) throws SQLException{
+        if(connection!=null){
+            connection.close();
+        }
         if( connection == null || connection.isClosed( ) ){
             try{
                 Context context = new InitialContext( );
