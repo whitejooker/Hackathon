@@ -19,7 +19,6 @@
                     <label>Name</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
@@ -27,7 +26,6 @@
                     <label>Username</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
@@ -35,14 +33,12 @@
                     <label>Email</label>
                     <div class="input-group">
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required autocomplete="off">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
@@ -50,32 +46,32 @@
                     <label>Confirm Password</label>
                     <div class="input-group">
                         <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required autocomplete="off">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>City</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="city_id" name="city" placeholder="Enter City" required autocomplete="off">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
+                    <label class="filter-col" style="margin-top:10px;">City:</label>
+                    <select id="city" name="city" class="form-control">
+                        <c:forEach var="city" items="${requestScope.cities}">
+                            <option value="${city.id}">${city.name}</option>
+                        </c:forEach>
+                    </select>
                 </div>
+
+
 
 
                 <div class="form-group">
                     <label>Phone </label>
-                    <div class="input-group">
+                    <div class="input-group input-group-lg">
                         <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone Number" required autocomplete="off">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group input-group-lg">
                     <label>Address </label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="address" name="address" placeholder="Enter Address" required autocomplete="off">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
 

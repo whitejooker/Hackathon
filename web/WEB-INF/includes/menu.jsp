@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -29,19 +30,22 @@
                     <label class="filter-col" style="margin-right:0;" >State:</label>
                     <input type="text" class="form-control input-sm" id="search-state">
 
-                    <label class="filter-col" style="margin-right:0;" >City:</label>
-                    <input type="text" class="form-control input-sm" id="search-city">
+                    <div class="form-group">
+                        <label class="filter-col" style="margin-top:10px;">City:</label>
+                        <select id="city" class="form-control">
+                            <c:forEach var="city" items="${requestScope.cities}">
+                                <option value="${city.id}">${city.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
 
                 </div><!-- form group [search] -->
                 <div class="form-group">
-                    <label class="filter-col" style="margin-top:10px;" for="pref-orderby">Type:</label>
-                    <select id="pref-orderby" class="form-control">
-                        <option>Chicken Meals</option>
-                        <option> Beef Meals</option>
-                        <option> Fish Meals</option>
-                        <option> Lamb Meals</option>
-                        <option> Pork Meals</option>
-                        <option> Vegetarian Meals</option>
+                    <label class="filter-col" style="margin-top:10px;">Type:</label>
+                    <select id="type" class="form-control">
+                        <c:forEach var="type" items="${requestScope.types}">
+                            <option value="${type.id}">${type.name}</option>
+                        </c:forEach>
                     </select>
                 </div>
                 &nbsp;
