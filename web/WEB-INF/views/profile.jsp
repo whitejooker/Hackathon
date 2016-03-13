@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <title>$Title$</title>
+    <title>Profile</title>
 </head>
 <body>
 <%@include  file="../includes/menu.jsp" %>

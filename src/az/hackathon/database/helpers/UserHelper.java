@@ -1,5 +1,6 @@
 package az.hackathon.database.helpers;
 
+import az.hackathon.HashPassword;
 import az.hackathon.models.City;
 import az.hackathon.models.User;
 
@@ -26,7 +27,7 @@ public class UserHelper extends Helper{
         statement.setString(2, user.getName());
         statement.setString(3, user.getPhone());
         statement.setString(4, user.getEmail());
-        statement.setString(5, user.getPassword());
+        statement.setString(5, HashPassword.MD5(user.getPassword()));
         statement.setInt(6, user.getCity().getId());
         statement.setBoolean(7, user.isBlocked());
         statement.setString(8, user.getAddress());

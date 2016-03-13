@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css"/>
-    <title>$Title$</title>
+    <title>Search</title>
 
     <style type="text/css">
         .row{ margin:20px 20px 20px 20px;}

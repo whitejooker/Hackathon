@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css"/>
-    <title>$Title$</title>
+    <title>Home</title>
 
     <style type="text/css">
         .row{ margin:20px 20px 20px 20px;}
@@ -32,6 +32,7 @@
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
                     <%--<img src="/image/${food.image}" alt="" />--%>
+                    <img src="../../assets/img/nowaste.png" alt="" />
                     <div class="caption">
                         <h4><a href="<c:url value="/?action=viewfood&id=${food.id}" /> "> ${food.name}</a></h4>
                         <p>${food.description}.</p>

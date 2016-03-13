@@ -5,7 +5,7 @@
 <%@ page session="false"%>
 <html>
 <head>
-    <title>Login</title>
+    <title>Add food</title>
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css"/>
     <%--<link rel="stylesheet" href="../assets/css/register.css">--%>

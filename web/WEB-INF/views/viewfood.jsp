@@ -7,7 +7,7 @@
 <head>
     <link rel="stylesheet" href="assets/css/bootstrap.css">
     <link rel="stylesheet" href="assets/css/style.css"/>
-    <title>$Title$</title>
+    <title>Food</title>
 
     <style type="text/css">
         .row{ margin:20px 20px 20px 20px;}
@@ -67,7 +67,7 @@
     <div class="row" >
         <!-- Profile -->
         <div class="food_profile">
-            <img src="" alt=""  border="solid" width="500px" height="380px">
+            <img src="../../assets/img/images.jpg" alt=""  border="solid" width="500px" height="380px">
 
 
         </div>

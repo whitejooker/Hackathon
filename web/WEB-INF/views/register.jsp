@@ -6,7 +6,7 @@
 <%@ page session="false" %>
 <html>
 <head>
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css"/>
     <style>
@@ -68,7 +68,7 @@
 
                 <div class="form-group">
                     <label class="filter-col" style="margin-top:10px;" >City:</label>
-                    <select id="type" name="type" class="form-control">
+                    <select id="city_id" name="city_id" class="form-control">
                         <% CityHelper cityHelper = new CityHelper();
                             List<City> alltypes = cityHelper.getAllCities();
                             for(City city : alltypes) {

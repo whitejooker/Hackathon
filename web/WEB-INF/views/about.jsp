@@ -5,7 +5,7 @@
 <head>
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <title>$Title$</title>
+    <title>About us</title>
     <style>
         body  {
             background-image: url("../../assets/img/bg.jpg");

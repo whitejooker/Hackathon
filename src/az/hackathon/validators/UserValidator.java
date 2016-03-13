@@ -80,8 +80,10 @@ public boolean isValid( ){
 	forSaving.setName( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_NAME ) );
 	forSaving.setPhone( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_PHONE ) );
 	forSaving.setAddress( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_ADDRESS ) );
-	City city = new CityHelper( ).getCity( getCityId( ) );
-	forSaving.setCity( city );
+	String hl = "";
+	hl = util.getXSSsafeStringFromRequest( RequestUtil.PARAM_CITY_ID );
+	int id = (int) Integer.parseInt( hl );
+	forSaving.setCity( new  CityHelper().getCity(id) );
 	return flag;
 }
 }

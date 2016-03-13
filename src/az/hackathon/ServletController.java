@@ -41,6 +41,7 @@ public class ServletController extends HttpServlet {
     final static String ACTION_MYFOODS = "myfoods";
     final static String ACTION_REMOVEFOOD = "removefood";
     final static String ACTION_EDITFOOD = "editfood";
+    final static String ACTION_EDITPROFILE = "editprofile";
 
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String action = request.getParameter(RequestUtil.PARAM_ACTION);
@@ -65,7 +66,7 @@ public class ServletController extends HttpServlet {
             path = ApplicationConstants.JSP_LOGIN;
             if (request.getParameter(ApplicationConstants.ATTR_SUBMIT) != null) {
                 User user = new UserHelper().getUser(util.getXSSsafeStringFromRequest(RequestUtil.PARAM_USERNAME));
-                if (user.getId() != -1 && user.getPassword().equals(util.getXSSsafeStringFromRequest(RequestUtil.PARAM_PASSWORD))) {
+                if (user.getId() != -1 && user.getPassword().equals(HashPassword.MD5(util.getXSSsafeStringFromRequest(RequestUtil.PARAM_PASSWORD)))) {
                     request.getSession().setAttribute(ApplicationConstants.ATTR_USER, user);
                     request.setAttribute(ApplicationConstants.ATTR_IS_LOGGED, true);
                     path = "/";
@@ -100,10 +101,31 @@ public class ServletController extends HttpServlet {
             List<Food> listOfFood = new ArrayList<>();
             listOfFood = new FoodHelper().SeaarchFoodByUser(user);
             request.setAttribute(ApplicationConstants.ATTR_MYFOODS, listOfFood);
+            request.setAttribute(ApplicationConstants.ATTR_IS_MY_FOOD_PAGE, true);
             path = ApplicationConstants.JSP_MYFOODS;
             forward = true;
 
         }
+
+        else if(action.equals(ACTION_EDITPROFILE)){
+            User user = new User();
+            user = (User) request.getSession().getAttribute(ApplicationConstants.ATTR_USER);
+            user.setName(request.getParameter("name"));
+            user.setPhone(request.getParameter("phone"));
+            user.setEmail(request.getParameter("email"));
+            user.setAddress(request.getParameter("address"));
+
+            UserHelper userHelper = new UserHelper();
+
+            userHelper.updateUser(user);
+            int id1 = user.getId();
+            request.getSession().removeAttribute(ApplicationConstants.ATTR_USER);
+            request.getSession().setAttribute(ApplicationConstants.ATTR_USER, new UserHelper().getUser(id1));
+            path = ApplicationConstants.JSP_HOME_PAGE;
+            forward = true;
+
+        }
+
         else if (action.equals(ACTION_LOGOUT)) {
             HttpSession session = request.getSession();
             session.removeAttribute(ApplicationConstants.ATTR_USER);

@@ -19,6 +19,7 @@ String ATTR_ALL_CITIES = "allCities";
 String ATTR_IS_LOGGED = "isLogged";
 String ATTR_ABOUT = "isAboutPage";
 String ATTR_IS_HOME_PAGE = "isHomePage";
+String ATTR_IS_MY_FOOD_PAGE = "isMyFoodPage";
 String ATTR_USER = "userLogged";
 String ATTR_SUBMIT = "submit";
 String ATTR_SELECTION = "selection";
