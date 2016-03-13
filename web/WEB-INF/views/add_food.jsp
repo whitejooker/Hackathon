@@ -69,7 +69,7 @@
                 <div class="form-group">
                     <label>Description</label>
                     <div class="input-group">
-                        <textarea name="decription" id="description" class="form-control" rows="5" required></textarea>
+                        <textarea name="description" id="description" class="form-control" rows="5" required></textarea>
                         <span class="input-group-addon"></span>
                     </div>
                 </div>

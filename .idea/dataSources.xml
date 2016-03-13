@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml">
-    <data-source source="LOCAL" name="MySQL - hackathon@localhost" uuid="7a9a9dd0-f77a-4fc6-b7db-b5067cf6759e">
+    <data-source source="LOCAL" name="MySQL - hackathon@localhost [2]" uuid="b586aa5b-3e15-490a-8d4a-d29b726a8ef9">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/hackathon</jdbc-url>
       <driver-properties>
+        <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
         <property name="tinyInt1isBit" value="false" />
         <property name="characterEncoding" value="utf8" />
