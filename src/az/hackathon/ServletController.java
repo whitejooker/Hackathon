@@ -1,9 +1,11 @@
 package az.hackathon;
 
 import az.hackathon.database.helpers.FoodHelper;
+import az.hackathon.database.helpers.TypeHelper;
 import az.hackathon.database.helpers.UserHelper;
 import az.hackathon.models.Food;
 import az.hackathon.models.Selection;
+import az.hackathon.models.Type;
 import az.hackathon.models.User;
 import az.hackathon.utils.RequestUtil;
 import az.hackathon.validators.MealValidator;
@@ -20,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 @WebServlet(name = "UserRegistrar", urlPatterns = {""})
 @MultipartConfig(location = ApplicationConstants.PICTURE_UPLOAD_DIR, fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 20, maxRequestSize = 1024 * 1024 * 21)
@@ -28,7 +31,7 @@ public class ServletController extends HttpServlet {
     final static String ACTION_LOGIN = "login";
     final static String ACTION_LOGOUT = "exit";
     final static String ACTION_ABOUT = "about";
-    final static String ACTION_ADD_FOOD = "addFood";
+    final static String ACTION_ADD_FOOD = "add";
     final static String ACTION_VIEW_FOOD = "viewfood";
     final static String ACTION_ADD_FOOD_PAGE = "add_food";
 
@@ -87,10 +90,20 @@ public class ServletController extends HttpServlet {
                 foodForSaving.setAmount(Integer.parseInt(request.getParameter("amount").trim()));
                 foodForSaving.setPrice(Double.parseDouble(request.getParameter("price").trim()));
                 foodForSaving.setState(Integer.parseInt(request.getParameter("state").trim()));
+                foodForSaving.setActive(true);
                 foodForSaving.setPictureExtension(".jpg");
+
                 int id1 = 0;
-                id1 = Integer.parseInt(request.getParameter("type_id"));
-                foodForSaving.setUser((User) request.getSession().getAttribute(ApplicationConstants.ATTR_IS_LOGGED));
+                id1 = Integer.parseInt(request.getParameter("type"));
+                List<Type> alltypes = new TypeHelper().getAllTypes();
+                for(Type type : alltypes){
+                    if(type.getId() == id1){
+                        foodForSaving.setType(type);
+                        break;
+                    }
+                }
+
+                foodForSaving.setUser((User) request.getSession().getAttribute(ApplicationConstants.ATTR_USER));
 
                 new FoodHelper().saveFood(foodForSaving);
                 path = ApplicationConstants.JSP_ADD_FOOD;
