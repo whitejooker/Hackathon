@@ -1,4 +1,7 @@
 
+<c:if test="${requestScope.numberofFood>9}">
+
+    <c:set var="numberofPages" scope="request" value="${requestScope.numberofFood%9==0?requestScope.numberofFood/9:requestScope.numberofFood/9+1}"/>
 <nav style="margin-left:40%; ">
     <ul class="pagination">
 
@@ -10,7 +13,7 @@
             <li class="disabled"> <a  class="btn btn-large disabled"  href="/?page=${requestScope.currentPage - 1}">Previous</a></li>
         </c:if>
 
-        <c:forEach begin="1" end="${requestScope.numberOfPages}" var="i" step="1">
+        <c:forEach begin="1" end="${numberOfPages}" var="i" step="1">
             <c:choose>
                 <c:when test="${requestScope.currentPage eq i}">
                     <li class="active"><a href="#">${i}</a></li>
@@ -32,5 +35,6 @@
 
     </ul>
 </nav>
+</c:if>
 
 
