@@ -1,5 +1,7 @@
 package az.hackathon.models;
 
+import az.hackathon.ApplicationConstants;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -28,16 +30,15 @@ public class Selection {
 
 
     public String getSQL(){
-        return "select * from meal m join user u on u.id=m.user_id join city c on c.id=u.city_id WHERE type_id=? and price<=? and m.amount >= ? and m.state <=? and c.id=? limit ?,?";
+
+        return "select * from meal m join user u on u.id=m.user_id join city c on c.id=u.city_id WHERE price<=? and m.amount >= ? and m.state <=?";
     }
 
     public void setValuesToStatement(PreparedStatement statement) throws SQLException{
 
-        statement.setInt(1, type.getId());
-        statement.setDouble(2, price);
-        statement.setInt(3, amount);
-        statement.setInt(4, state);
-        statement.setInt(5, city.getId());
+        statement.setDouble(1, price);
+        statement.setInt(2, amount);
+        statement.setInt(3, state);
     }
 
     public City getCity() {
