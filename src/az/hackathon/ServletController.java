@@ -38,6 +38,7 @@ public class ServletController extends HttpServlet {
         RequestUtil util = new RequestUtil(request);
         String path = ApplicationConstants.JSP_HOME_PAGE;
         boolean forward = true;
+        System.out.println(request.getParameter("page")+" yuxaridayam");
         if (action != null) if (action.equals(ACTION_REGISTER)) {
             path = ApplicationConstants.JSP_REGISTRATION;
             if (request.getParameter(ApplicationConstants.ATTR_SUBMIT) != null) {
@@ -48,7 +49,7 @@ public class ServletController extends HttpServlet {
                     request.getSession().setAttribute(ApplicationConstants.ATTR_USER, validator.forSaving);
                     request.setAttribute(ApplicationConstants.ATTR_IS_LOGGED, true);
                     path = "/";
-                    forward = true;
+                    forward = false;
                 } else request.setAttribute(ApplicationConstants.ATTR_MESSAGES, validator.getErrorMessages());
             }
         } else if (action.equals(ACTION_LOGIN)) {
@@ -79,7 +80,7 @@ public class ServletController extends HttpServlet {
             session.invalidate();
             path = "/";
             request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE, true);
-            forward = true;
+            forward = false;
         } else if (action.equals(ACTION_ADD_FOOD) && ((Boolean) request.getAttribute(ApplicationConstants.ATTR_IS_LOGGED)).equals(Boolean.TRUE)) {
             path = ApplicationConstants.JSP_ADD_FOOD;
             MealValidator validator = new MealValidator(request);
@@ -97,17 +98,24 @@ public class ServletController extends HttpServlet {
             path = ApplicationConstants.JSP_VIEW_FOOD;
             forward = true;
         }
-
+        System.out.println(request.getParameter("page")+" if yu");
         if (path.equals(ApplicationConstants.JSP_HOME_PAGE)) {
             request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE, true);
-            Selection selection = (Selection) request.getSession().getAttribute(ApplicationConstants.ATTR_SELECTION);
+            int currentPage = 1;
+            if(request.getParameter("page")!=null)
+            currentPage = Integer.parseInt(request.getParameter("page"));
+            Selection selection = new Selection();
+            selection = (Selection) request.getSession().getAttribute(ApplicationConstants.ATTR_SELECTION);
             if (request.getParameter(ApplicationConstants.ATTR_SUBMIT) != null || selection == null) {
                 selection = new SelectionValidator().PrepareSelection(request);
                 request.getSession().setAttribute(ApplicationConstants.ATTR_SELECTION, selection);
             }
-            request.setAttribute(ApplicationConstants.ATTR_MEALS, new FoodHelper().getAllFoodBySelection(selection));
+
+
+            request.setAttribute(ApplicationConstants.ATTR_MEALS, new FoodHelper().getAllFoodBySelection(selection,currentPage));
             request.setAttribute(ApplicationConstants.ATTR_NUMBER_OF_FOOD, new FoodHelper().getNumberOfFood());
-            request.setAttribute(ApplicationConstants.ATTR_CURRENT_PAGE_NUMBER, selection.getCurrentPage());
+            request.setAttribute(ApplicationConstants.ATTR_CURRENT_PAGE_NUMBER, currentPage);
+            System.out.println(selection.getCurrentPage());
         }
 
         if (forward) request.getRequestDispatcher("/WEB-INF/views/" + path).forward(request, response);

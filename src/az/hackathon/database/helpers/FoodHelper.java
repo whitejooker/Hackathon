@@ -103,7 +103,7 @@ public class FoodHelper extends Helper{
 
     }
 
-    public List<Food> getAllFoodBySelection(Selection selection){
+    public List<Food> getAllFoodBySelection(Selection selection, int currentPage){
         List<Food> listOfFood = new ArrayList<>();
         try {
             String query = selection.getSQL();
@@ -142,13 +142,13 @@ public class FoodHelper extends Helper{
             selection.setValuesToStatement(statement);
             if(flag_city>0) { statement.setInt(flag_city, selection.getCity().getId()); }
             if(flag_type>0) { statement.setInt(flag_type, selection.getType().getId()); }
-            statement.setInt(flag_limit, (selection.getCurrentPage()-1)*9);
+            statement.setInt(flag_limit, (currentPage-1)*9);
             statement.setInt(flag_limit + 1, 9);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
                 listOfFood.add(createMealFromResultSet(resultSet));
             }
-            
+
 
         }catch (Exception e){
             System.out.println("Can't get Food by selection : " + selection);
