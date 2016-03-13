@@ -1,3 +1,5 @@
+<%@ page import="az.hackathon.models.Food" %>
+<%@ page import="az.hackathon.ApplicationConstants" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -37,14 +39,11 @@
 
 </head>
 <body>
-<c:choose>
-    <c:when test="${requestScope.isLogged==true}">
-        <c:import url="../includes/menu-for-admin.jsp"/>
-    </c:when>
-    <c:otherwise>
+
+
         <c:import url="../includes/menu.jsp"/>
-    </c:otherwise>
-</c:choose>
+
+
 
 <div class="container">
 
@@ -59,14 +58,14 @@
 
         <!-- Info -->
         <div class="book_info">
-            <h1>${requestScope.food.title}</h1>
-
+            <h1>${requestScope.food.name}</h1>
+<!--
             <h3>Author: ${book.author}</h3>
             <h3>Publisher:  ${book.publisher}</h3>
             <h3>Genre:  ${book.genre}</h3>
             <h3>Edition:  ${book.edition}</h3>
             <h3>PageCount:</h3>
-            <h3>Release Date:</h3>
+            <h3>Release Date:</h3> -->
         </div>
 
 
@@ -86,6 +85,8 @@
 <%@include  file="../includes/footer.jsp" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="assets/js/bootstrap.js"></script>
+
+
 </body>
 </html>
 
