@@ -37,6 +37,7 @@ public class ServletController extends HttpServlet {
     final static String ACTION_ADD_FOOD_PAGE = "add_food";
     final static String ACTION_FILTER = "filter";
     final static String ACTION_SEARCH = "search";
+    final static String ACTION_MYFOODS = "myfoods";
 
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String action = request.getParameter(RequestUtil.PARAM_ACTION);
@@ -98,6 +99,15 @@ public class ServletController extends HttpServlet {
             listOfFood = new FoodHelper().SeaarchFoodByWord(searchstring);
             request.setAttribute(ApplicationConstants.ATTR_SEARCH_RESULT, listOfFood);
             path = ApplicationConstants.JSP_SEARCH;
+            forward = true;
+        }
+
+        else if(action.equals(ACTION_MYFOODS)){
+            User user = (User) request.getSession().getAttribute(ApplicationConstants.ATTR_USER);
+            List<Food> listOfFood = new ArrayList<>();
+            listOfFood = new FoodHelper().SeaarchFoodByUser(user);
+            request.setAttribute(ApplicationConstants.ATTR_MYFOODS, listOfFood);
+            path = ApplicationConstants.JSP_MYFOODS;
             forward = true;
         }
 

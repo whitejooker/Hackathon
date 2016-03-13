@@ -30,9 +30,11 @@
                 </ul>
             </c:otherwise>
         </c:choose>
-        <form class="navbar-form navbar-right"  action="?action=search">
+
+        <form class="navbar-form navbar-right"  action="/">
             <div class="form-group">
-                <input type="text" class="form-control"  id="search" name="?action=search" placeholder="Search">
+                <input type="hidden" value="search" name="action" />
+                <input type="text" class="form-control" name="search" placeholder="Search"/>
             </div>
         </form>
     </div>
