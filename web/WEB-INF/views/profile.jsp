@@ -6,7 +6,7 @@
     <title>$Title$</title>
 </head>
 <body>
-<%@include  file="../includes/menu-for-admin.jsp" %>
+<%@include  file="../includes/menu.jsp" %>
 <div class="container">
     <div class="row">
         <div class="col-sm-3">

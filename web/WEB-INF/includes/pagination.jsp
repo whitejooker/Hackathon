@@ -7,7 +7,7 @@
             <li> <a href="/?page=${requestScope.currentPage - 1}">Previous</a></li>
         </c:if>
         <c:if test="${requestScope.currentPage <=1}">
-            <li class="disabled" > <a  href="/?page=${requestScope.currentPage - 1}">Previous</a></li>
+            <li class="disabled"> <a  class="btn btn-large disabled"  href="/?page=${requestScope.currentPage - 1}">Previous</a></li>
         </c:if>
 
         <c:forEach begin="1" end="${requestScope.numberOfPages}" var="i" step="1">
@@ -27,7 +27,7 @@
             <li><a href="<c:url value="/?page=${currentPage + 1}"/>">Next</a></li>
         </c:if>
         <c:if test="${currentPage >=numberOfPages}">
-            <li class="disabled" ><a  href="<c:url value="/?page=${currentPage + 1}"/>">Next</a></li>
+            <li class="disabled"><a class="btn btn-large disabled"  href="<c:url value="/?page=${currentPage + 1}"/>">Next</a></li>
         </c:if>
 
     </ul>

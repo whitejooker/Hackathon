@@ -1,9 +1,3 @@
-.footer
-{
-    background-color: black;
-    width: 100%;
-    height: 100px;
-}
 
 .container>div
 {
@@ -28,8 +22,8 @@
 footer{
     position: fixed;
     bottom: 0;
-    height: 8%;
-    background-color: black;
+    height: 10%;
+    background-color: rgba(55,61,73,0.975);
     border-radius: 3%;
 }
 .footer-copyright
@@ -39,6 +33,7 @@ footer{
 .footer-company-name
 {
     color: #ffffff;
+    right: 10px;
 }
 @media (max-height:800px){
     footer { position: static; }
