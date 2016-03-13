@@ -65,7 +65,7 @@ public Selection PrepareSelection( HttpServletRequest request ){
 	selection.setPrice( price );
 	selection.setAmount( amount );
 	selection.setState( state );
-	selection.setCurrentPage( Integer.parseInt(request.getParameter("page")) );
+	selection.setCurrentPage( 1);
 	return selection;
 }
 }

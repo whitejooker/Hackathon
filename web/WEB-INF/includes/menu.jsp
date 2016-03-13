@@ -8,7 +8,14 @@
         <ul class="nav navbar-nav">
             <li class="active"><a href="/">Home</a></li>
             <li><a href="/?action=about">About</a></li>
-
+<c:choose>
+    <c:when test="${requestScope.isLogged==true}">
+        <li><a href="/?action=profile">Profile</a></li>
+        <li><a href="/?action=add_food">Add Food</a></li>
+    </c:when>
+    <c:otherwise>
+    </c:otherwise>
+</c:choose>c:
         </ul>
                 <c:choose>
             <c:when test="${requestScope.isLogged==true}">

@@ -30,6 +30,7 @@ public class ServletController extends HttpServlet {
     final static String ACTION_ABOUT = "about";
     final static String ACTION_ADD_FOOD = "addFood";
     final static String ACTION_VIEW_FOOD = "viewfood";
+    final static String ACTION_ADD_FOOD_PAGE = "add_food";
 
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String action = request.getParameter(RequestUtil.PARAM_ACTION);
@@ -47,7 +48,7 @@ public class ServletController extends HttpServlet {
                     request.getSession().setAttribute(ApplicationConstants.ATTR_USER, validator.forSaving);
                     request.setAttribute(ApplicationConstants.ATTR_IS_LOGGED, true);
                     path = "/";
-                    forward = false;
+                    forward = true;
                 } else request.setAttribute(ApplicationConstants.ATTR_MESSAGES, validator.getErrorMessages());
             }
         } else if (action.equals(ACTION_LOGIN)) {
@@ -62,7 +63,13 @@ public class ServletController extends HttpServlet {
                 } else
                     request.setAttribute(ApplicationConstants.ATTR_MESSAGES, Collections.singletonList("Password or login is wrong"));
             }
-        } else if (action.equals(ACTION_ABOUT)) {
+
+        }else if (action.equals(ACTION_ADD_FOOD_PAGE)) {
+            path = ApplicationConstants.JSP_ADD_FOOD_PAGE;
+            forward = true;
+
+        }
+        else if (action.equals(ACTION_ABOUT)) {
             path = ApplicationConstants.JSP_ABOUT;
             request.setAttribute(ApplicationConstants.ATTR_ABOUT, true);
             forward = true;
@@ -72,14 +79,14 @@ public class ServletController extends HttpServlet {
             session.invalidate();
             path = "/";
             request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE, true);
-            forward = false;
+            forward = true;
         } else if (action.equals(ACTION_ADD_FOOD) && ((Boolean) request.getAttribute(ApplicationConstants.ATTR_IS_LOGGED)).equals(Boolean.TRUE)) {
             path = ApplicationConstants.JSP_ADD_FOOD;
             MealValidator validator = new MealValidator(request);
             if (validator.isValid()) {
                 new FoodHelper().saveFood(validator.forSaving);
                 path = "/";
-                forward = false;
+                forward = true;
             } else request.setAttribute(ApplicationConstants.ATTR_MESSAGES, validator.getMessages());
         }
             else if(action.equals(ACTION_VIEW_FOOD)){
