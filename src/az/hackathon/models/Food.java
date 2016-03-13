@@ -10,7 +10,7 @@ public class Food {
     private int state;
     private String description;
     private String name;
-    private double price;
+    private Double price;
     private int amount;
     private Date date;
     private String pictureExtension;
@@ -117,11 +117,11 @@ public class Food {
         this.type = type;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
