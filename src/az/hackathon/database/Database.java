@@ -17,12 +17,7 @@ public class Database{
     private Connection connection;
 
     public Database( ){
-        try{
-            getConnection( );
-        }catch( SQLException e ){
-            System.out.println( "Can't create a Database object" + e.getMessage());
-            e.printStackTrace( );
-        }
+
     }
 
     public void close( ){
