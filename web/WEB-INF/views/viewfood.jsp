@@ -79,6 +79,8 @@
             <h1>State:&nbsp;${requestScope.food.state}</h1>
             <h1>Amount:&nbsp;${requestScope.food.amount}</h1>
             <h1>Price:&nbsp;${requestScope.food.price} $</h1>
+            <h1>Seller:&nbsp;${requestScope.food.user.name}</h1>
+            <h1>Phone:&nbsp;${requestScope.food.user.phone}</h1>
         </div>
 
 

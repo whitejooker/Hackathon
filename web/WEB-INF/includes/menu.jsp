@@ -11,7 +11,8 @@
 <c:choose>
     <c:when test="${requestScope.isLogged==true}">
         <li><a href="/?action=profile">Profile</a></li>
-        <li><a href="/?action=add_food">Add Food</a></li>
+        <li><a href="/?action=myfoods">My Food</a></li>
+        <li><a href="/?action=add_food">  <span class="glyphicon glyphicon-plus"></span> Add Food</a></li>
     </c:when>
     <c:otherwise>
     </c:otherwise>

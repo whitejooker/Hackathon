@@ -15,6 +15,9 @@
             background-size: 100% 100%;
             background-repeat: no-repeat;
         }
+        label{
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
