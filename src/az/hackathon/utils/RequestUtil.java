@@ -22,7 +22,7 @@ public class RequestUtil {
     public static final String PARAM_PICTURE = "picture";
     public static final String PARAM_ID = "id";
     public static final String PARAM_DESCRIPTION = "description";
-    public static final String PARAM_SEARCH_STRING = "search_string";
+    public static final String PARAM_SEARCH_STRING = "search";
 
     public HttpServletRequest request;
 

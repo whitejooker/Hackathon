@@ -3,6 +3,7 @@ package az.hackathon.database.helpers;
 import az.hackathon.ApplicationConstants;
 import az.hackathon.models.Food;
 import az.hackathon.models.Selection;
+import az.hackathon.models.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -178,7 +179,7 @@ public class FoodHelper extends Helper{
     public List<Food> SeaarchFoodByWord(String searchstring){
         List<Food> listOfFood = new ArrayList<>();
         try{
-            PreparedStatement statement = database.getConnection( ).prepareStatement("select * from meal where is_active=? and lower(description) like '%" + searchstring.toLowerCase() + "%'");
+            PreparedStatement statement = database.getConnection( ).prepareStatement("select * from meal where is_active=? and ( lower(name) like '%" + searchstring.toLowerCase() + "%' or lower(description) like '%" + searchstring.toLowerCase() + "%' )" );
             statement.setBoolean(1, true);
 
             ResultSet rs = statement.executeQuery();
@@ -193,4 +194,26 @@ public class FoodHelper extends Helper{
         }
         return listOfFood;
     }
+
+
+
+    public List<Food> SeaarchFoodByUser(User user){
+        List<Food> listOfFood = new ArrayList<>();
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement("select * from meal where is_active=? and user_id=?" );
+            statement.setBoolean(1, true);
+            statement.setInt(2, user.getId() );
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                listOfFood.add(createMealFromResultSet(rs));
+            }
+        }catch( SQLException e){
+            System.out.println( "Can't find number of food " + e.getMessage() );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+        return listOfFood;
+    }
+
 }
