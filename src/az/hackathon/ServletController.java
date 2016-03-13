@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.DoubleAccumulator;
 
 @WebServlet(name = "UserRegistrar", urlPatterns = {""})
 @MultipartConfig(location = ApplicationConstants.PICTURE_UPLOAD_DIR, fileSizeThreshold = 1024 * 1024, maxFileSize = 1024 * 1024 * 20, maxRequestSize = 1024 * 1024 * 21)
@@ -93,7 +94,7 @@ public class ServletController extends HttpServlet {
             food.setDescription(request.getParameter("description"));
             food.setState(Integer.parseInt(request.getParameter("state")));
             food.setAmount(Integer.parseInt((request.getParameter("amount"))));
-            food.setPrice(Integer.parseInt(request.getParameter("price")));
+            food.setPrice(Double.parseDouble(request.getParameter("price")));
             new FoodHelper().updateFood(food);
             User user = (User) request.getSession().getAttribute(ApplicationConstants.ATTR_USER);
             List<Food> listOfFood = new ArrayList<>();
