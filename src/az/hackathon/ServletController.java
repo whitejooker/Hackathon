@@ -39,6 +39,7 @@ public class ServletController extends HttpServlet {
     final static String ACTION_SEARCH = "search";
     final static String ACTION_MYFOODS = "myfoods";
     final static String ACTION_REMOVEFOOD = "removefood";
+    final static String ACTION_EDITFOOD = "editfood";
 
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String action = request.getParameter(RequestUtil.PARAM_ACTION);
@@ -77,11 +78,32 @@ public class ServletController extends HttpServlet {
             forward = true;
 
         }
+
+
         else if (action.equals(ACTION_ABOUT)) {
             path = ApplicationConstants.JSP_ABOUT;
             request.setAttribute(ApplicationConstants.ATTR_ABOUT, true);
             forward = true;
-        } else if (action.equals(ACTION_LOGOUT)) {
+        }
+
+        else if(action.equals(ACTION_EDITFOOD)){
+            Food food = new Food();
+            food = new FoodHelper().getFood(Integer.parseInt(request.getParameter("id")));
+            food.setName(request.getParameter("name"));
+            food.setDescription(request.getParameter("description"));
+            food.setState(Integer.parseInt(request.getParameter("state")));
+            food.setAmount(Integer.parseInt((request.getParameter("amount"))));
+            food.setPrice(Integer.parseInt(request.getParameter("price")));
+            new FoodHelper().updateFood(food);
+            User user = (User) request.getSession().getAttribute(ApplicationConstants.ATTR_USER);
+            List<Food> listOfFood = new ArrayList<>();
+            listOfFood = new FoodHelper().SeaarchFoodByUser(user);
+            request.setAttribute(ApplicationConstants.ATTR_MYFOODS, listOfFood);
+            path = ApplicationConstants.JSP_MYFOODS;
+            forward = true;
+
+        }
+        else if (action.equals(ACTION_LOGOUT)) {
             HttpSession session = request.getSession();
             session.removeAttribute(ApplicationConstants.ATTR_USER);
             session.invalidate();
@@ -123,6 +145,8 @@ public class ServletController extends HttpServlet {
             path = ApplicationConstants.JSP_MYFOODS;
             forward = true;
         }
+
+
 
         else if (action.equals(ACTION_ADD_FOOD) && ((Boolean) request.getAttribute(ApplicationConstants.ATTR_IS_LOGGED)).equals(Boolean.TRUE)) {
                 Food foodForSaving = new Food();
