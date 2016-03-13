@@ -40,7 +40,7 @@
         <div id="filter-panel" class="collapse filter-panel">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form class="form-inline" role="form" >
+                    <form class="form-inline" role="form" action="?action=filter" >
                         <div class="form-group">
                             <label class="filter-col" style="margin-right:0;" >Price:</label>
                             <input type="text" class="form-control input-sm" id="search-price">
