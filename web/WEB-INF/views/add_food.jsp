@@ -1,3 +1,6 @@
+<%@ page import="az.hackathon.database.helpers.TypeHelper" %>
+<%@ page import="az.hackathon.models.Type" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="false"%>
 <html>
@@ -23,6 +26,20 @@
                     </div>
                 </div>
 
+                <div class="form-group">
+                    <label >State</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="state" name="state" placeholder="Enter State " required autocomplete="off">
+                        <span class="input-group-addon"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label >Price</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="price" name="price" placeholder="Enter Price " required autocomplete="off">
+                        <span class="input-group-addon"></span>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <label >Amount</label>
@@ -33,14 +50,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="filter-col" style="margin-top:10px;" for="pref-orderby">Type:</label>
-                    <select id="pref-orderby" class="form-control">
-                        <option>Chicken Meals</option>
-                        <option> Beef Meals</option>
-                        <option> Fish Meals</option>
-                        <option> Lamb Meals</option>
-                        <option> Pork Meals</option>
-                        <option> Vegetarian Meals</option>
+                    <label class="filter-col" style="margin-top:10px;" >Type:</label>
+                    <select id="type" name="type" class="form-control">
+                        <% TypeHelper typeHelper = new TypeHelper();
+                            List<Type> alltypes = typeHelper.getAllTypes();
+
+                            for(Type type : alltypes) {
+                        %>
+
+                        <option value="<%=type.getId() %>"> <%= type.getName() %></option>
+
+                        <% } %>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </select>
 
@@ -49,18 +69,18 @@
                 <div class="form-group">
                     <label>Description</label>
                     <div class="input-group">
-                        <textarea name="description" id="InputMessage" class="form-control" rows="5" required></textarea>
+                        <textarea name="decription" id="description" class="form-control" rows="5" required></textarea>
                         <span class="input-group-addon"></span>
                     </div>
                 </div>
-<!--
-                <div class="form-group">
-                    <div class="input-group">
-                        <label class="control-label">Select Picture of  Food</label><br>
-                        <input id="food_image" name="food_image" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
-                    </div>
-                </div>
--->
+
+                <%--<div class="form-group">--%>
+                    <%--<div class="input-group">--%>
+                        <%--<label class="control-label">Select Picture of  Food</label><br>--%>
+                        <%--<input id="food_image" name="food_image" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">--%>
+                    <%--</div>--%>
+                <%--</div>--%>
+
 
 
                 <input type="submit" name="submit" id="submit" value="Add" class="btn btn-info pull-right">
