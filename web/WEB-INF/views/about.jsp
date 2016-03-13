@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css"/>
     <title>$Title$</title>
+    <style>
+        body  {
+            background-image: url("../../assets/img/bg.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../includes/menu.jsp" %>

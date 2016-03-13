@@ -9,6 +9,13 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css"/>
     <%--<link rel="stylesheet" href="../assets/css/register.css">--%>
+    <style>
+        body  {
+            background-image: url("../../assets/img/form1.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
 <body>
 <%@include  file="../includes/menu.jsp" %>
@@ -54,12 +61,9 @@
                     <select id="type" name="type" class="form-control">
                         <% TypeHelper typeHelper = new TypeHelper();
                             List<Type> alltypes = typeHelper.getAllTypes();
-
                             for(Type type : alltypes) {
                         %>
-
                         <option value="<%=type.getId() %>"> <%= type.getName() %></option>
-
                         <% } %>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </select>
@@ -98,7 +102,7 @@
         <%--</div>--%>
     </div>
 </div>
-<%@include  file="../includes/footer.jsp" %>
+
 <script src="../../assets/js/bootstrap.js"></script>
 </body>
 </html>
