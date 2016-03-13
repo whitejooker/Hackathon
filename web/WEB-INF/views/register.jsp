@@ -1,3 +1,6 @@
+<%@ page import="az.hackathon.database.helpers.CityHelper" %>
+<%@ page import="az.hackathon.models.City" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page session="false" %>
@@ -64,11 +67,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label>City</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="city_id" name="city_id" placeholder="Enter City" required autocomplete="off">
+                    <label class="filter-col" style="margin-top:10px;" >City:</label>
+                    <select id="type" name="type" class="form-control">
+                        <% CityHelper cityHelper = new CityHelper();
+                            List<City> alltypes = cityHelper.getAllCities();
+                            for(City city : alltypes) {
+                        %>
+                        <option value="<%=city.getId() %>"> <%= city.getName() %></option>
+                        <% } %>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
-                    </div>
+                    </select>
+
                 </div>
 
 
