@@ -15,8 +15,8 @@ String ATTR_SUBMIT = "submit";
 String ATTR_SELECTION = "selection";
 String ATTR_MEALS = "foods";
 
-int DEFAULT_TYPE_ID = 1;
-int DEFAULT_CITY_ID = 1;
+int DEFAULT_TYPE_ID = 0;
+int DEFAULT_CITY_ID = 0;
 double DEFAULT_PRICE = 9999;
 int DEFAULT_AMOUNT = 0;
 int DEFAULT_STATE = 99999;

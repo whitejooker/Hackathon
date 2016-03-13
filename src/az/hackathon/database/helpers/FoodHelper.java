@@ -1,5 +1,6 @@
 package az.hackathon.database.helpers;
 
+import az.hackathon.ApplicationConstants;
 import az.hackathon.models.Food;
 import az.hackathon.models.Selection;
 
@@ -51,6 +52,21 @@ public class FoodHelper extends Helper{
         return food;
     }
 
+    public Food getFood(int id){
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement( "SELECT * FROM meal WHERE id=? " );
+            statement.setInt( 1, id );
+            ResultSet rs = statement.executeQuery( );
+            if( rs.next( ) ) return createMealFromResultSet( rs );
+        }catch( SQLException e ){
+            System.out.println( "Can't get the food: " + id );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+        return new Food();
+    }
+
     public Food saveFood(Food food){
 
 
@@ -90,10 +106,44 @@ public class FoodHelper extends Helper{
     public List<Food> getAllFoodBySelection(Selection selection){
         List<Food> listOfFood = new ArrayList<>();
         try {
-            PreparedStatement statement = database.getConnection().prepareStatement(selection.getSQL());
+            String query = selection.getSQL();
+            int flag_city = -1;
+            int flag_type = -1;
+            int flag_limit = -1;
+            if(selection.getCity().getId()!= ApplicationConstants.DEFAULT_CITY_ID){
+                query = query + " and c.id=?";
+                flag_city = 4;
+            }
+
+            if(selection.getType().getId()!= ApplicationConstants.DEFAULT_TYPE_ID){
+                query = query + " and type_id=?";
+                if(flag_city>0){
+                    flag_type = flag_city + 1;
+                }
+                else{
+                    flag_type = 4;
+                }
+            }
+
+            query = query + " order by m.date limit ?, ?";
+            if(flag_city>0 && flag_type>0){
+                flag_limit = 6;
+            }
+            else if(flag_city>0 || flag_type>0){
+                flag_limit = 5;
+            }
+            else{
+                flag_limit = 4;
+            }
+
+
+            PreparedStatement statement = database.getConnection().prepareStatement(query);
+
             selection.setValuesToStatement(statement);
-            statement.setInt(6, (selection.getCurrentPage()-1)*9);
-            statement.setInt(7, selection.getCurrentPage()*9-1);
+            if(flag_city>0) { statement.setInt(flag_city, selection.getCity().getId()); }
+            if(flag_type>0) { statement.setInt(flag_type, selection.getType().getId()); }
+            statement.setInt(flag_limit, (selection.getCurrentPage()-1)*9);
+            statement.setInt(flag_limit + 1, selection.getCurrentPage()*9-1);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
                 listOfFood.add(createMealFromResultSet(resultSet));
@@ -101,6 +151,8 @@ public class FoodHelper extends Helper{
 
         }catch (Exception e){
             System.out.println("Can't get Food by selection : " + selection);
+        }finally{
+            database.close();
         }
         return listOfFood;
     }
