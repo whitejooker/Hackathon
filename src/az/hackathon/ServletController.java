@@ -99,6 +99,7 @@ public class ServletController extends HttpServlet {
                 request.getSession().setAttribute(ApplicationConstants.ATTR_SELECTION, selection);
             }
             request.setAttribute(ApplicationConstants.ATTR_MEALS, new FoodHelper().getAllFoodBySelection(selection));
+            request.setAttribute(ApplicationConstants.ATTR_NUMBER_OF_FOOD, new FoodHelper().getNumberOfFood());
         }
 
         if (forward) request.getRequestDispatcher("/WEB-INF/views/" + path).forward(request, response);

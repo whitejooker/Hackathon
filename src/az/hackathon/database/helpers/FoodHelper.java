@@ -158,5 +158,20 @@ public class FoodHelper extends Helper{
         return listOfFood;
     }
 
+    public int getNumberOfFood(){
+       int numberOfFood = 0;
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement("select count(id) from meal where is_active=?");
+            statement.setBoolean(1, true);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()) { numberOfFood = rs.getInt(1);}
+        }catch( SQLException e){
+            System.out.println( "Can't find number of food " + e.getMessage() );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+        return numberOfFood;
+    }
 
 }

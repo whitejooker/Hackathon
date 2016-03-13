@@ -21,6 +21,7 @@ String ATTR_SUBMIT = "submit";
 String ATTR_SELECTION = "selection";
 String ATTR_MEALS = "foods";
 String ATTR_FOOD = "food";
+String ATTR_NUMBER_OF_FOOD = "numberOfFood";
 
 
 int DEFAULT_TYPE_ID = 0;
