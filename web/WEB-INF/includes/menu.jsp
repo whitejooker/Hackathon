@@ -10,9 +10,50 @@
             <li><a href="/?action=about">About</a></li>
 <c:choose>
     <c:when test="${requestScope.isLogged==true}">
-        <li><a href="/?action=profile">Profile</a></li>
+
+        <li><a href="#myModal" role="button" data-toggle="modal" rel="tooltip" data-original-title='Hello' >
+            <span class="glyphicon glyphicon-pencil"></span> Edit Profile</a></li>
         <li><a href="/?action=myfoods">My Food</a></li>
         <li><a href="/?action=add_food">  <span class="glyphicon glyphicon-plus"></span> Add Food</a></li>
+
+        <form action="/?action=editprofile&id" method="post">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Edit Profile</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="name" value="${sessionScope.userLogged.name}">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Phone:</label>
+                                <input type="text" class="form-control" id="phone" name="phone" value="${sessionScope.userLogged.phone}">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Email:</label>
+                                <input type="text" class="form-control" id="email" name="email" value="${sessionScope.userLogged.email}">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label">Address:</label>
+                                <input type="text" class="form-control" id="address" name="address" value="${sessionScope.userLogged.address}">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" >Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </c:when>
     <c:otherwise>
     </c:otherwise>
