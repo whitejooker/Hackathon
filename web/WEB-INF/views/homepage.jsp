@@ -32,6 +32,11 @@
         .glyphicon-thumbs-down:hover{ color: #E10000; cursor:pointer;}
         .counter{ color:#333333;}
         .thumbnail img{height:200px;}
+        body  {
+            background-image: url("../../assets/img/form1.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
     </style>
 
 </head>

@@ -38,7 +38,6 @@
         </c:if>
 
     </ul>
-    <c:out value="${requestScope.currentPage}"></c:out>
 </nav>
 </c:if>
 
