@@ -6,8 +6,11 @@
             <a class="navbar-brand" href="/">Nowaste.az</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
+            <li class="active"><a href="/">Home </a></li>
+            <c:if test="${requestScope.isHomePage==true || requestScope.isRegisterPage==true || requestScope.isLoginPage==true}">
             <li><a href="/?action=about">About</a></li>
+            </c:if>
+
         </ul>
                 <c:choose>
             <c:when test="${requestScope.isHomePage==true || requestScope.isRegisterPage==true || requestScope.isLoginPage==true}">

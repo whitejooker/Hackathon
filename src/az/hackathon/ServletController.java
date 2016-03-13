@@ -65,6 +65,7 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 	}
 
 	if( path.equals( ApplicationConstants.JSP_HOME_PAGE ) ){
+		request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE,true);
 		Selection selection = (Selection) request.getSession( ).getAttribute( ApplicationConstants.ATTR_SELECTION );
 		if( request.getParameter( ApplicationConstants.ATTR_SUBMIT ) != null || selection == null ){
 			selection = new SelectionValidator( ).PrepareSelection( request );
