@@ -22,7 +22,7 @@ String ATTR_SELECTION = "selection";
 String ATTR_MEALS = "foods";
 String ATTR_FOOD = "food";
 String ATTR_NUMBER_OF_FOOD = "numberOfFood";
-
+String ATTR_CURRENT_PAGE_NUMBER = "currentPage";
 
 int DEFAULT_TYPE_ID = 0;
 int DEFAULT_CITY_ID = 0;
