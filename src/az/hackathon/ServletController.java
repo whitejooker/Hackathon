@@ -31,6 +31,7 @@ final static String ACTION_ADD_FOOD = "addFood";
 
 public void process( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException{
 	final String action = request.getParameter( RequestUtil.PARAM_ACTION );
+	final String id = request.getParameter( RequestUtil.PARAM_ID);
 	RequestUtil util = new RequestUtil( request );
 	String path = ApplicationConstants.JSP_HOME_PAGE;
 	boolean forward = true;
@@ -47,7 +48,8 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 				forward = false;
 			}else request.setAttribute( ApplicationConstants.ATTR_MESSAGES, validator.getErrorMessages( ) );
 		}
-	}else if( action.equals( ACTION_LOGIN ) ){
+	}
+	else if( action.equals( ACTION_LOGIN ) ){
 		path = ApplicationConstants.JSP_LOGIN;
 		if( request.getParameter( ApplicationConstants.ATTR_SUBMIT ) != null ){
 			User user = new UserHelper( ).getUser( util.getXSSsafeStringFromRequest( RequestUtil.PARAM_USERNAME ) );
@@ -59,6 +61,8 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 			}else request.setAttribute( ApplicationConstants.ATTR_MESSAGES, Collections.singletonList( "Password or login is wrong" ) );
 		}
 	}
+
+
 	else if( action.equals( ACTION_ABOUT ) ) {
 		path = ApplicationConstants.JSP_ABOUT;
 		request.setAttribute(ApplicationConstants.ATTR_ABOUT, true);
@@ -73,6 +77,7 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 		request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE, true);
 		forward = false;
 	}
+
 
 
 	else if( action.equals( ACTION_ADD_FOOD ) && ( (Boolean) request.getAttribute( ApplicationConstants.ATTR_IS_LOGGED ) ).equals( Boolean.TRUE ) ){

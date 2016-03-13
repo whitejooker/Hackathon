@@ -46,7 +46,7 @@
                 <div class="thumbnail">
                     <%--<img src="/image/${food.image}" alt="" />--%>
                     <div class="caption">
-                        <h4><a href="<c:url value="/?id=${food.id}" /> "> ${food.name}</a></h4>
+                        <h4><a href="<c:url value="/?action=viewfood&id=${food.id}" /> "> ${food.name}</a></h4>
                         <p>${food.description}.</p>
 
                     </div>

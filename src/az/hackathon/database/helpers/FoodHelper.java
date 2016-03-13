@@ -143,7 +143,7 @@ public class FoodHelper extends Helper{
             if(flag_city>0) { statement.setInt(flag_city, selection.getCity().getId()); }
             if(flag_type>0) { statement.setInt(flag_type, selection.getType().getId()); }
             statement.setInt(flag_limit, (selection.getCurrentPage()-1)*9);
-            statement.setInt(flag_limit + 1, selection.getCurrentPage()*9-1);
+            statement.setInt(flag_limit + 1, 9);
             ResultSet resultSet = statement.executeQuery();
             while(resultSet.next()){
                 listOfFood.add(createMealFromResultSet(resultSet));
