@@ -31,7 +31,7 @@ public class Selection {
 
     public String getSQL(){
 
-        return "select * from meal m join user u on u.id=m.user_id join city c on c.id=u.city_id WHERE price<=? and m.amount >= ? and m.state <=?";
+        return "select * from meal m join user u on u.id=m.user_id join city c on c.id=u.city_id WHERE m.price<=? and m.amount >= ? and m.state <=? ";
     }
 
     public void setValuesToStatement(PreparedStatement statement) throws SQLException{

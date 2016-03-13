@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,6 +35,8 @@ public class ServletController extends HttpServlet {
     final static String ACTION_ADD_FOOD = "add";
     final static String ACTION_VIEW_FOOD = "viewfood";
     final static String ACTION_ADD_FOOD_PAGE = "add_food";
+    final static String ACTION_FILTER = "filter";
+    final static String ACTION_SEARCH = "search";
 
     public void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         final String action = request.getParameter(RequestUtil.PARAM_ACTION);
@@ -83,7 +86,22 @@ public class ServletController extends HttpServlet {
             path = "/";
             request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE, true);
             forward = false;
-        } else if (action.equals(ACTION_ADD_FOOD) && ((Boolean) request.getAttribute(ApplicationConstants.ATTR_IS_LOGGED)).equals(Boolean.TRUE)) {
+        } else if(action.equals(ACTION_FILTER)){
+            path = ApplicationConstants.JSP_HOME_PAGE;
+            request.setAttribute(ApplicationConstants.ATTR_SUBMIT , "yes");
+            forward = true;
+        }
+
+        else if(action.equals(ACTION_SEARCH)){
+            String searchstring = request.getParameter(RequestUtil.PARAM_SEARCH_STRING).trim();
+            List<Food> listOfFood = new ArrayList<>();
+            listOfFood = new FoodHelper().SeaarchFoodByWord(searchstring);
+            request.setAttribute(ApplicationConstants.ATTR_SEARCH_RESULT, listOfFood);
+            path = ApplicationConstants.JSP_SEARCH;
+            forward = true;
+        }
+
+        else if (action.equals(ACTION_ADD_FOOD) && ((Boolean) request.getAttribute(ApplicationConstants.ATTR_IS_LOGGED)).equals(Boolean.TRUE)) {
                 Food foodForSaving = new Food();
                 foodForSaving.setName(request.getParameter("food_title").trim());
                 foodForSaving.setDescription(request.getParameter("description").trim());
@@ -118,7 +136,7 @@ public class ServletController extends HttpServlet {
             path = ApplicationConstants.JSP_VIEW_FOOD;
             forward = true;
         }
-        System.out.println(request.getParameter("page")+" if yu");
+
         if (path.equals(ApplicationConstants.JSP_HOME_PAGE)) {
             request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE, true);
             int currentPage = 1;

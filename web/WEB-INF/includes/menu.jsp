@@ -43,16 +43,16 @@
                     <form class="form-inline" role="form" action="?action=filter" >
                         <div class="form-group">
                             <label class="filter-col" style="margin-right:0;" >Price:</label>
-                            <input type="text" class="form-control input-sm" id="search-price">
+                            <input type="text" class="form-control input-sm" id="price" name="price">
 
                             <label class="filter-col" style="margin-right:0;" >Amount:</label>
-                            <input type="text" class="form-control input-sm" id="search-amount">
+                            <input type="text" class="form-control input-sm" id="amount" name="amount">
 
                             <label class="filter-col" style="margin-right:0;" >State:</label>
-                            <input type="text" class="form-control input-sm" id="search-state">
+                            <input type="text" class="form-control input-sm" id="state" name="state">
 
                             <label class="filter-col" style="margin-right:0;" >City:</label>
-                            <input type="text" class="form-control input-sm" id="search-city">
+                            <input type="text" class="form-control input-sm" id="search-city" name="city">
 
                             <div class="form-group">
                                 <label class="filter-col" style="margin-top:10px;">City:</label>
@@ -66,7 +66,7 @@
                         </div><!-- form group [search] -->
                         <div class="form-group">
                             <label class="filter-col" style="margin-top:10px;">Type:</label>
-                            <select id="type" class="form-control">
+                            <select id="type" class="form-control" name="type">
                                 <c:forEach var="type" items="${requestScope.types}">
                                     <option value="${type.id}">${type.name}</option>
                                 </c:forEach>

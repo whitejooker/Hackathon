@@ -116,7 +116,7 @@ public class FoodHelper extends Helper{
             }
 
             if(selection.getType().getId()!= ApplicationConstants.DEFAULT_TYPE_ID){
-                query = query + " and type_id=?";
+                query = query + " and m.type_id=?";
                 if(flag_city>0){
                     flag_type = flag_city + 1;
                 }
@@ -140,6 +140,7 @@ public class FoodHelper extends Helper{
             PreparedStatement statement = database.getConnection().prepareStatement(query);
 
             selection.setValuesToStatement(statement);
+            System.out.println("Here price = " + selection.getPrice());
             if(flag_city>0) { statement.setInt(flag_city, selection.getCity().getId()); }
             if(flag_type>0) { statement.setInt(flag_type, selection.getType().getId()); }
             statement.setInt(flag_limit, (currentPage-1)*9);
@@ -174,4 +175,22 @@ public class FoodHelper extends Helper{
         return numberOfFood;
     }
 
+    public List<Food> SeaarchFoodByWord(String searchstring){
+        List<Food> listOfFood = new ArrayList<>();
+        try{
+            PreparedStatement statement = database.getConnection( ).prepareStatement("select * from meal where is_active=? and lower(description) like '%" + searchstring.toLowerCase() + "%'");
+            statement.setBoolean(1, true);
+
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                listOfFood.add(createMealFromResultSet(rs));
+            }
+        }catch( SQLException e){
+            System.out.println( "Can't find number of food " + e.getMessage() );
+            e.printStackTrace( );
+        }finally{
+            database.close( );
+        }
+        return listOfFood;
+    }
 }
