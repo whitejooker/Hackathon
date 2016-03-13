@@ -8,7 +8,7 @@
     <%--<link rel="stylesheet" href="../assets/css/register.css">--%>
 </head>
 <body>
-<%@include  file="../includes/menu-for-login-and-register.jsp" %>
+<%@include  file="../includes/menu.jsp" %>
 <div class="container">
     <div class="row">
         <form role="form" action="/?action=add" method="post">

@@ -51,7 +51,7 @@ public void process( HttpServletRequest request, HttpServletResponse response ) 
 				forward = false;
 			}else request.setAttribute( ApplicationConstants.ATTR_MESSAGES, Collections.singletonList( "Password or login is wrong" ) );
 		}
-	}else if( action.equals( ACTION_ADD_FOOD ) && request.getSession( ).getAttribute( ApplicationConstants.ATTR_IS_LOGGED ).equals( true ) ){
+	}else if( action.equals( ACTION_ADD_FOOD ) && request.getAttribute( ApplicationConstants.ATTR_IS_LOGGED ).equals( true ) ){
 		path = ApplicationConstants.JSP_ADD_FOOD;
 
 	}
