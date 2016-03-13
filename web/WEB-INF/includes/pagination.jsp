@@ -1,7 +1,11 @@
 
-<c:if test="${requestScope.numberofFood>9}">
+<c:if test="${requestScope.numberOfFood>8}">
 
-    <c:set var="numberofPages" scope="request" value="${requestScope.numberofFood%9==0?requestScope.numberofFood/9:requestScope.numberofFood/9+1}"/>
+    <c:set var="numberOfPages"  scope="session"
+           value="${requestScope.numberOfFood%9==0?requestScope.numberOfFood/9:requestScope.numberOfFood/9+1}"/>
+
+    <fmt:parseNumber var="numberOfPages" type="number" value="${numberOfPages}" />
+
 <nav style="margin-left:40%; ">
     <ul class="pagination">
 
@@ -34,6 +38,7 @@
         </c:if>
 
     </ul>
+    <c:out value="${requestScope.currentPage}"></c:out>
 </nav>
 </c:if>
 

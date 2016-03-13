@@ -19,7 +19,7 @@
                     <label >Food Title</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="food_title" id="food_title" placeholder="Enter Food Title" required>
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon"></span>
                     </div>
                 </div>
 
@@ -27,7 +27,7 @@
                     <label >Description</label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description about Food" required autocomplete="off">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon"></span>
                     </div>
                 </div>
 
@@ -35,7 +35,7 @@
                     <label >Amount</label>
                     <div class="input-group">
                         <input type="text" class="form-control" id="amount" name="amount" placeholder="Enter Amount of Food" required autocomplete="off">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <span class="input-group-addon"></span>
                     </div>
                 </div>
 
@@ -48,19 +48,29 @@
                         <option> Lamb Meals</option>
                         <option> Pork Meals</option>
                         <option> Vegetarian Meals</option>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </select>
+
                 </div>
 
                 <div class="form-group">
-                    <label >Description</label>
+                    <label>Description</label>
                     <div class="input-group">
-                        <label class="control-label">Select Picture of  Food</label>
-                        <input id="food_image" name="food_image" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                        <span class="input-group-addon"></span>
                     </div>
                 </div>
 
-                <input type="submit" name="submit" id="submit" value="Log in" class="btn btn-info pull-right">
+                <div class="form-group">
+                    <div class="input-group">
+                        <label class="control-label">Select Picture of  Food</label><br>
+                        <input id="food_image" name="food_image" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
+                    </div>
+                </div>
+
+
+
+                <input type="submit" name="submit" id="submit" value="Add" class="btn btn-info pull-right">
             </div>
         </form>
         <%--<div class="col-lg-5 col-md-push-1">--%>
