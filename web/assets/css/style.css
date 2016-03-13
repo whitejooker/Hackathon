@@ -39,3 +39,9 @@ footer{
     footer { position: static; }
     header { padding-top:40px; }
 }
+
+body  {
+    background-image: url("../img/bg.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
