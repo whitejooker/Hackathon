@@ -19,6 +19,8 @@ public final static String PARAM_AMOUNT = "state";
 public final static String PARAM_PRICE = "price";
 public final static String PARAM_TYPE_ID = "type_id";
 public final static String PARAM_ADDRESS = "address";
+public static final String PARAM_PICTURE = "picture";
+public static final String PARAM_DESCRIPTION = "description";
 
 public HttpServletRequest request;
 

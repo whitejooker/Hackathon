@@ -33,13 +33,16 @@
                 <input type="submit" name="submit" id="submit" value="Log in" class="btn btn-info pull-right">
             </div>
         </form>
-        <div class="col-lg-5 col-md-push-1">
-            <div class="col-md-12">
-                <div class="alert alert-danger">
-                    <span class="glyphicon glyphicon-remove"></span><strong>${requestScope.messages}</strong>
+        <c:if test="${not empty requestScope.messages}">
+            <div class="col-lg-5 col-md-push-1">
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+                        <span class="glyphicon glyphicon-remove"></span><strong>${requestScope.messages}</strong>
+                    </div>
                 </div>
             </div>
-        </div>
+        </c:if>
+
     </div>
 </div>
 <%@include file="../includes/footer.jsp" %>
