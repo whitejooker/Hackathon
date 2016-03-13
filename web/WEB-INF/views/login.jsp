@@ -6,7 +6,16 @@
     <title>Login</title>
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <%--<link rel="stylesheet" href="../assets/css/register.css">--%>
+    <style>
+        body  {
+            background-image: url("../../assets/img/space1-3.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        label{
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../includes/menu.jsp" %>

@@ -6,7 +6,16 @@
     <title>Login</title>
     <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     <link rel="stylesheet" href="../../assets/css/style.css"/>
-    <%--<link rel="stylesheet" href="../assets/css/register.css">--%>
+    <style>
+        body  {
+            background-image: url("../../assets/img/space1-3.jpg");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+        }
+        label{
+            color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <%@include file="../includes/menu.jsp" %>
@@ -16,7 +25,7 @@
             <div class="col-lg-6">
                 <br>
                 <div class="form-group">
-                    <label>Name</label>
+                    <label >Name</label>
                     <div class="input-group">
                         <input type="text" class="form-control" name="name" id="name" placeholder="Enter Name" required>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>

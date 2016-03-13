@@ -30,7 +30,7 @@
                 </ul>
             </c:otherwise>
         </c:choose>
-        <form class="navbar-form navbar-right" role="search" action="?action=search">
+        <form class="navbar-form navbar-right"  action="?action=search">
             <div class="form-group">
                 <input type="text" class="form-control" name="search" placeholder="Search">
             </div>
