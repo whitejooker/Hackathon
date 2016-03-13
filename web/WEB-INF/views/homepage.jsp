@@ -35,7 +35,17 @@
 
 </head>
 <body>
-<c:import url="../includes/menu.jsp"/>
+<c:choose>
+    <c:when test="${requestScope.isLogged==true}">
+        <c:import url="../includes/menu-for-admin.jsp"/>
+    </c:when>
+    <c:otherwise>
+        <c:import url="../includes/menu.jsp"/>
+    </c:otherwise>
+</c:choose>
+
+
+
 
 <div class="container">
     <div class="row">
