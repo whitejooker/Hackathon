@@ -148,6 +148,7 @@ public class FoodHelper extends Helper{
             while(resultSet.next()){
                 listOfFood.add(createMealFromResultSet(resultSet));
             }
+            
 
         }catch (Exception e){
             System.out.println("Can't get Food by selection : " + selection);
