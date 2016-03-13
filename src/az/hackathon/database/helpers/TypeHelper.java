@@ -2,6 +2,8 @@ package az.hackathon.database.helpers;
 
 import az.hackathon.models.Type;
 
+import java.util.List;
+
 /**
  * Created by Qalib on 3/12/2016.
  */
@@ -15,5 +17,8 @@ public class TypeHelper extends Helper {
             }
         }
         return type;
+    }
+    public List<Type> getAllTypes(){
+        return Type.allTypes;
     }
 }

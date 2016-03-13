@@ -11,10 +11,14 @@ public static int NUMBER_OF_TYPES = 4;
 public static final List<Type> allTypes = new ArrayList<>( NUMBER_OF_TYPES );
 
 static{
-	allTypes.add( new Type( 0, "curial", 999 ) );
-	allTypes.add( new Type( 1, "milky", 999 ) );
-	allTypes.add( new Type( 2, "fruit", 999 ) );
-	allTypes.add( new Type( 3, "plastic", 999 ) );
+	allTypes.add( new Type( 0, "Chicken Meals", 999 ) );
+	allTypes.add( new Type( 1, "Beef Meals", 999 ) );
+	allTypes.add( new Type( 2, "Fish Meals", 999 ) );
+	allTypes.add( new Type( 3, "Lamb Meals", 999 ) );
+	allTypes.add( new Type( 4, "Pork Meals", 999 ) );
+	allTypes.add( new Type( 4, "Vegetarian Meals", 999 ) );
+
+
 }
 
 private int id;

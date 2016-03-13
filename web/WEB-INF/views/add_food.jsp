@@ -23,13 +23,6 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label >Description</label>
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Enter Description about Food" required autocomplete="off">
-                        <span class="input-group-addon"></span>
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <label >Amount</label>
@@ -56,18 +49,18 @@
                 <div class="form-group">
                     <label>Description</label>
                     <div class="input-group">
-                        <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
+                        <textarea name="description" id="InputMessage" class="form-control" rows="5" required></textarea>
                         <span class="input-group-addon"></span>
                     </div>
                 </div>
-
+<!--
                 <div class="form-group">
                     <div class="input-group">
                         <label class="control-label">Select Picture of  Food</label><br>
                         <input id="food_image" name="food_image" type="file" class="file" multiple data-show-upload="false" data-show-caption="true">
                     </div>
                 </div>
-
+-->
 
 
                 <input type="submit" name="submit" id="submit" value="Add" class="btn btn-info pull-right">

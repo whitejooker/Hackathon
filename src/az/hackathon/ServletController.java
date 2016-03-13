@@ -38,7 +38,6 @@ public class ServletController extends HttpServlet {
         RequestUtil util = new RequestUtil(request);
         String path = ApplicationConstants.JSP_HOME_PAGE;
         boolean forward = true;
-        System.out.println(request.getParameter("page")+" yuxaridayam");
         if (action != null) if (action.equals(ACTION_REGISTER)) {
             path = ApplicationConstants.JSP_REGISTRATION;
             if (request.getParameter(ApplicationConstants.ATTR_SUBMIT) != null) {
@@ -82,13 +81,21 @@ public class ServletController extends HttpServlet {
             request.setAttribute(ApplicationConstants.ATTR_IS_HOME_PAGE, true);
             forward = false;
         } else if (action.equals(ACTION_ADD_FOOD) && ((Boolean) request.getAttribute(ApplicationConstants.ATTR_IS_LOGGED)).equals(Boolean.TRUE)) {
-            path = ApplicationConstants.JSP_ADD_FOOD;
-            MealValidator validator = new MealValidator(request);
-            if (validator.isValid()) {
-                new FoodHelper().saveFood(validator.forSaving);
-                path = "/";
+                Food foodForSaving = new Food();
+                foodForSaving.setName(request.getParameter("food_title").trim());
+                foodForSaving.setDescription(request.getParameter("description").trim());
+                foodForSaving.setAmount(Integer.parseInt(request.getParameter("amount").trim()));
+                foodForSaving.setPrice(Double.parseDouble(request.getParameter("price").trim()));
+                foodForSaving.setState(Integer.parseInt(request.getParameter("state").trim()));
+                foodForSaving.setPictureExtension(".jpg");
+                int id1 = 0;
+                id1 = Integer.parseInt(request.getParameter("type_id"));
+                foodForSaving.setUser((User) request.getSession().getAttribute(ApplicationConstants.ATTR_IS_LOGGED));
+
+                new FoodHelper().saveFood(foodForSaving);
+                path = ApplicationConstants.JSP_ADD_FOOD;
                 forward = true;
-            } else request.setAttribute(ApplicationConstants.ATTR_MESSAGES, validator.getMessages());
+
         }
             else if(action.equals(ACTION_VIEW_FOOD)){
             int idOfFood = Integer.parseInt(id);
